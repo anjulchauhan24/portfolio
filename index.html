@@ -1249,6 +1249,211 @@
         </div>
     </footer>
 
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/917017575679?text=Hi%20Anjul%2C%20I%20visited%20your%20portfolio%20website%20and%20would%20like%20to%20connect%20with%20you." target="_blank" 
+       class="fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full shadow-lg hover:bg-green-600 transition-all duration-300 flex items-center justify-center z-40 hover:scale-110 group">
+        <i class="fab fa-whatsapp text-3xl"></i>
+        <span class="absolute right-16 bg-gray-900 text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+            Chat on WhatsApp
+        </span>
+    </a>
+
+    <!-- Chatbot Button -->
+    <button id="chatBtn" class="fixed bottom-24 right-6 bg-gradient-to-br from-blue-500 to-purple-600 text-white w-14 h-14 rounded-full shadow-lg hover:scale-110 transition-all duration-300 flex items-center justify-center z-40 group">
+        <svg viewBox="0 0 24 24" class="w-7 h-7 fill-white">
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
+            <circle cx="12" cy="10" r="1"/>
+            <circle cx="8" cy="10" r="1"/>
+            <circle cx="16" cy="10" r="1"/>
+        </svg>
+        <span class="absolute right-16 bg-gray-900 text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+            Chat with me
+        </span>
+    </button>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" class="fixed bottom-[168px] right-6 bg-primary text-white w-14 h-14 rounded-full shadow-lg hover:bg-secondary transition-all duration-300 z-40 flex items-center justify-center hover:scale-110 group" style="display: none;">
+        <i class="fas fa-arrow-up text-xl"></i>
+        <span class="absolute right-16 bg-gray-900 text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+            Back to Top
+        </span>
+    </button>
+
+    <!-- Chat Window -->
+    <div class="chat-window fixed bottom-24 right-6 w-96 h-[500px] bg-white rounded-2xl shadow-2xl hidden flex-col overflow-hidden z-50" id="chatWindow">
+        <!-- Chat Header -->
+        <div class="chat-header bg-gradient-to-r from-blue-500 to-purple-600 text-white p-5 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center mr-3">
+                    <i class="fas fa-robot text-xl"></i>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-lg">Chat Assistant</h3>
+                    <p class="text-xs text-white/80">Online</p>
+                </div>
+            </div>
+            <button id="closeBtn" class="text-white hover:bg-white/20 w-8 h-8 rounded-full flex items-center justify-center transition-colors">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+        </div>
+        
+        <!-- Chat Messages Area -->
+        <div class="chat-messages flex-1 p-5 overflow-y-auto bg-gray-50" id="chatMessages">
+            <div class="message bot flex items-start mb-4">
+                <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                    <i class="fas fa-robot text-white text-sm"></i>
+                </div>
+                <div class="message-bubble bg-white p-3 rounded-lg rounded-tl-none shadow-sm max-w-[75%]">
+                    <p class="text-gray-800 text-sm">Hi! I'm Anjul's AI assistant. Ask me about his skills, experience, projects, or how to get in touch!</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Chat Input Area -->
+        <div class="chat-input-area p-4 bg-white border-t border-gray-200 flex gap-2">
+            <input type="text" id="chatInput" placeholder="Ask about skills, experience, contact..." 
+                   class="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
+            <button id="sendBtn" class="bg-gradient-to-br from-blue-500 to-purple-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:scale-110 transition-transform disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <style>
+    /* WhatsApp Button Animation */
+    @keyframes pulse-green {
+        0%, 100% {
+            box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+        }
+        50% {
+            box-shadow: 0 0 0 10px rgba(34, 197, 94, 0);
+        }
+    }
+
+    a[href*="wa.me"] {
+        animation: pulse-green 2s infinite;
+    }
+
+    a[href*="wa.me"]:hover {
+        animation: none;
+    }
+
+    /* Chatbot Button Animation */
+    @keyframes pulse-blue {
+        0%, 100% {
+            box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+        }
+        50% {
+            box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+        }
+    }
+
+    #chatBtn {
+        animation: pulse-blue 2s infinite;
+    }
+
+    #chatBtn:hover {
+        animation: none;
+    }
+
+    /* Scroll to Top Button Animation */
+    @keyframes pulse-primary {
+        0%, 100% {
+            box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.5);
+        }
+        50% {
+            box-shadow: 0 0 0 8px rgba(59, 130, 246, 0);
+        }
+    }
+
+    #scrollToTopBtn {
+        animation: pulse-primary 2s infinite;
+    }
+
+    #scrollToTopBtn:hover {
+        animation: none;
+    }
+
+    /* Chat Window Animation */
+    .chat-window.active {
+        display: flex !important;
+        animation: slideUp 0.3s ease-out;
+    }
+
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Custom Scrollbar */
+    .chat-messages::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .chat-messages::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+    }
+
+    .chat-messages::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 10px;
+    }
+
+    .chat-messages::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+    }
+
+    /* User Message Styling */
+    .message.user .message-bubble {
+        background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+        color: white;
+        margin-left: auto;
+    }
+
+    .message.user {
+        flex-direction: row-reverse;
+    }
+
+    .message.user .message-bubble {
+        border-radius: 1rem;
+        border-top-right-radius: 0.25rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 640px) {
+        .chat-window {
+            width: calc(100vw - 2rem);
+            right: 1rem;
+            left: 1rem;
+        }
+        
+        #chatBtn, a[href*="wa.me"], #scrollToTopBtn {
+            right: 1.5rem;
+        }
+        
+        #scrollToTopBtn {
+            bottom: 10.5rem;
+        }
+        
+        #chatBtn {
+            bottom: 6rem;
+        }
+        
+        a[href*="wa.me"] {
+            bottom: 1.5rem;
+        }
+    }
+    </style>
+
     <script>
         window.addEventListener('scroll', () => {
             const scrollProgress = document.getElementById('scrollProgress');
@@ -1460,12 +1665,9 @@
             animateOnScroll.observe(el);
         });
 
-        const scrollToTopBtn = document.createElement('button');
-        scrollToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
-        scrollToTopBtn.className = 'fixed bottom-8 right-8 bg-primary text-white w-12 h-12 rounded-full shadow-lg hover:bg-secondary transition-all duration-300 z-50 flex items-center justify-center hover:scale-110';
-        scrollToTopBtn.style.display = 'none';
-        document.body.appendChild(scrollToTopBtn);
-
+        // Scroll to Top Button Functionality
+        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+        
         window.addEventListener('scroll', () => {
             if (window.pageYOffset > 300) {
                 scrollToTopBtn.style.display = 'flex';
@@ -1489,389 +1691,200 @@
                 submitBtn.disabled = true;
             });
         }
-    </script>
-<!-- WhatsApp Floating Button -->
-<a href="https://wa.me/917017575679?text=Hi%20Anjul%2C%20I%20visited%20your%20portfolio%20website%20and%20would%20like%20to%20connect%20with%20you." target="_blank" 
-   class="fixed bottom-24 right-6 bg-green-500 text-white w-14 h-14 rounded-full shadow-lg hover:bg-green-600 transition-all duration-300 flex items-center justify-center z-50 hover:scale-110 group">
-    <i class="fab fa-whatsapp text-3xl"></i>
-    <span class="absolute right-16 bg-gray-900 text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-        Chat on WhatsApp
-    </span>
-</a>
 
-<style>
-/* Animation for WhatsApp button */
-@keyframes pulse-green {
-    0%, 100% {
-        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
-    }
-    50% {
-        box-shadow: 0 0 0 10px rgba(34, 197, 94, 0);
-    }
-}
+        // Chatbot Functionality
+        (function() {
+            const chatBtn = document.getElementById('chatBtn');
+            const chatWindow = document.getElementById('chatWindow');
+            const closeBtn = document.getElementById('closeBtn');
+            const sendBtn = document.getElementById('sendBtn');
+            const chatInput = document.getElementById('chatInput');
+            const chatMessages = document.getElementById('chatMessages');
 
-.fixed.bottom-24:hover {
-    animation: none;
-}
-
-.fixed.bottom-24 {
-    animation: pulse-green 2s infinite;
-}
-</style>
-
-
-
-<!-- Chatbot Button -->
-<button id="chatBtn" class="fixed bottom-6 right-6 bg-gradient-to-br from-blue-500 to-purple-600 text-white w-14 h-14 rounded-full shadow-lg hover:scale-110 transition-all duration-300 flex items-center justify-center z-50 group">
-    <svg viewBox="0 0 24 24" class="w-7 h-7 fill-white">
-        <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
-        <circle cx="12" cy="10" r="1"/>
-        <circle cx="8" cy="10" r="1"/>
-        <circle cx="16" cy="10" r="1"/>
-    </svg>
-    <span class="absolute right-16 bg-gray-900 text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-        Chat with me
-    </span>
-</button>
-
-<!-- Chat Window -->
-<div class="chat-window fixed bottom-24 right-6 w-96 h-[500px] bg-white rounded-2xl shadow-2xl hidden flex-col overflow-hidden z-40" id="chatWindow">
-    <!-- Chat Header -->
-    <div class="chat-header bg-gradient-to-r from-blue-500 to-purple-600 text-white p-5 flex justify-between items-center">
-        <div class="flex items-center">
-            <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center mr-3">
-                <i class="fas fa-robot text-xl"></i>
-            </div>
-            <div>
-                <h3 class="font-semibold text-lg">Chat Assistant</h3>
-                <p class="text-xs text-white/80">Online</p>
-            </div>
-        </div>
-        <button id="closeBtn" class="text-white hover:bg-white/20 w-8 h-8 rounded-full flex items-center justify-center transition-colors">
-            <i class="fas fa-times text-xl"></i>
-        </button>
-    </div>
-    
-    <!-- Chat Messages Area -->
-    <div class="chat-messages flex-1 p-5 overflow-y-auto bg-gray-50" id="chatMessages">
-        <div class="message bot flex items-start mb-4">
-            <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
-                <i class="fas fa-robot text-white text-sm"></i>
-            </div>
-            <div class="message-bubble bg-white p-3 rounded-lg rounded-tl-none shadow-sm max-w-[75%]">
-                <p class="text-gray-800 text-sm">Hi! I'm Anjul's AI assistant. 👋 Ask me about his skills, experience, projects, or how to get in touch!</p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Chat Input Area -->
-    <div class="chat-input-area p-4 bg-white border-t border-gray-200 flex gap-2">
-        <input type="text" id="chatInput" placeholder="Ask about skills, experience, contact..." 
-               class="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
-        <button id="sendBtn" class="bg-gradient-to-br from-blue-500 to-purple-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:scale-110 transition-transform disabled:opacity-50 disabled:cursor-not-allowed">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
-                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
-            </svg>
-        </button>
-    </div>
-</div>
-
-<!-- Chatbot Styles -->
-<style>
-/* Chatbot Button Animation */
-@keyframes pulse-blue {
-    0%, 100% {
-        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
-    }
-    50% {
-        box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
-    }
-}
-
-#chatBtn {
-    animation: pulse-blue 2s infinite;
-}
-
-#chatBtn:hover {
-    animation: none;
-}
-
-/* Chat Window Animation */
-.chat-window.active {
-    display: flex !important;
-    animation: slideUp 0.3s ease-out;
-}
-
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Custom Scrollbar */
-.chat-messages::-webkit-scrollbar {
-    width: 6px;
-}
-
-.chat-messages::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 10px;
-}
-
-.chat-messages::-webkit-scrollbar-thumb {
-    background: #cbd5e1;
-    border-radius: 10px;
-}
-
-.chat-messages::-webkit-scrollbar-thumb:hover {
-    background: #94a3b8;
-}
-
-/* User Message Styling */
-.message.user .message-bubble {
-    background: linear-gradient(135deg, #3B82F6, #8B5CF6);
-    color: white;
-    margin-left: auto;
-}
-
-.message.user {
-    flex-direction: row-reverse;
-}
-
-.message.user .message-bubble {
-    border-radius: 1rem;
-    border-top-right-radius: 0.25rem;
-}
-
-/* Responsive Design */
-@media (max-width: 640px) {
-    .chat-window {
-        width: calc(100vw - 2rem);
-        right: 1rem;
-        left: 1rem;
-    }
-    
-    #chatBtn {
-        bottom: 1.5rem;
-        right: 1.5rem;
-    }
-}
-</style>
-
-<!-- Chatbot JavaScript -->
-<script>
-(function() {
-    // DOM Elements
-    const chatBtn = document.getElementById('chatBtn');
-    const chatWindow = document.getElementById('chatWindow');
-    const closeBtn = document.getElementById('closeBtn');
-    const sendBtn = document.getElementById('sendBtn');
-    const chatInput = document.getElementById('chatInput');
-    const chatMessages = document.getElementById('chatMessages');
-
-    // Toggle chat window
-    chatBtn.addEventListener('click', () => {
-        chatWindow.classList.toggle('hidden');
-        chatWindow.classList.toggle('active');
-        if (!chatWindow.classList.contains('hidden')) {
-            chatInput.focus();
-        }
-    });
-
-    closeBtn.addEventListener('click', () => {
-        chatWindow.classList.add('hidden');
-        chatWindow.classList.remove('active');
-    });
-
-    // Add message function
-    function addMessage(text, isUser) {
-        const msgDiv = document.createElement('div');
-        msgDiv.className = `message ${isUser ? 'user' : 'bot'} flex items-start mb-4`;
-        
-        if (isUser) {
-            msgDiv.innerHTML = `
-                <div class="message-bubble p-3 rounded-lg shadow-sm max-w-[75%]">
-                    <p class="text-sm">${escapeHtml(text)}</p>
-                </div>
-                <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center ml-3 flex-shrink-0">
-                    <i class="fas fa-user text-white text-sm"></i>
-                </div>
-            `;
-        } else {
-            msgDiv.innerHTML = `
-                <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
-                    <i class="fas fa-robot text-white text-sm"></i>
-                </div>
-                <div class="message-bubble bg-white p-3 rounded-lg rounded-tl-none shadow-sm max-w-[75%]">
-                    <p class="text-gray-800 text-sm">${text}</p>
-                </div>
-            `;
-        }
-        
-        chatMessages.appendChild(msgDiv);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-
-    // Escape HTML to prevent XSS
-    function escapeHtml(text) {
-        const map = {
-            '&': '&amp;',
-            '<': '&lt;',
-            '>': '&gt;',
-            '"': '&quot;',
-            "'": '&#039;'
-        };
-        return text.replace(/[&<>"']/g, m => map[m]);
-    }
-
-    // Typing indicator functions
-    function showTypingIndicator() {
-        const typingDiv = document.createElement('div');
-        typingDiv.id = 'typingIndicator';
-        typingDiv.className = 'message bot flex items-start mb-4';
-        typingDiv.innerHTML = `
-            <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
-                <i class="fas fa-robot text-white text-sm"></i>
-            </div>
-            <div class="message-bubble bg-white p-3 rounded-lg rounded-tl-none shadow-sm">
-                <div class="flex gap-1">
-                    <span class="typing-dot w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0ms"></span>
-                    <span class="typing-dot w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 150ms"></span>
-                    <span class="typing-dot w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 300ms"></span>
-                </div>
-            </div>
-        `;
-        chatMessages.appendChild(typingDiv);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-
-    function hideTypingIndicator() {
-        const indicator = document.getElementById('typingIndicator');
-        if (indicator) indicator.remove();
-    }
-
-    // Enhanced response system with keyword matching
-    function generateResponse(msg) {
-        const keywords = {
-            greeting: ['hi', 'hello', 'hey', 'greetings', 'good morning', 'good afternoon', 'good evening'],
-            skills: ['skill', 'technology', 'tech', 'expertise', 'know', 'language', 'framework', 'stack'],
-            experience: ['experience', 'work', 'job', 'project', 'portfolio', 'worked', 'built'],
-            contact: ['contact', 'email', 'phone', 'reach', 'connect', 'get in touch', 'whatsapp'],
-            hire: ['hire', 'freelance', 'available', 'job', 'opportunity', 'collaborate', 'work together'],
-            education: ['education', 'study', 'college', 'university', 'degree', 'qualification'],
-            location: ['where', 'location', 'based', 'from', 'live'],
-            help: ['help', 'assist', 'support', 'question']
-        };
-
-        const responses = {
-            greeting: [
-                "Hello! 👋 I'm Anjul's AI assistant. I can help you learn about his skills, experience, and how to get in touch!",
-                "Hi there! Great to meet you! Feel free to ask me about Anjul's work, projects, or how to connect with her.",
-                "Hey! Welcome! I'm here to answer any questions about Anjul's background and expertise."
-            ],
-            skills: [
-                "Anjul is proficient in modern web technologies including React, Node.js, Python, and cloud services. She specializes in full-stack development and AI integration. Want to know more about specific technologies?",
-                "His tech stack includes JavaScript/TypeScript, React, Next.js, Node.js, Python, MongoDB, PostgreSQL, and AWS. He's also experienced with AI/ML tools and API development.",
-                "Anjul excels in building scalable web applications, RESTful APIs, and implementing AI-powered solutions. Check out his Experience section for detailed project examples!"
-            ],
-            experience: [
-                "Anjul has worked on diverse projects ranging from e-commerce platforms to AI chatbots and data analytics dashboards. Scroll down to the Experience section to see detailed case studies!",
-                "She has hands-on experience with full-stack development, cloud deployment, and agile methodologies. His projects showcase practical problem-solving and modern development practices.",
-                "Check out his portfolio to see real-world projects! He's built everything from customer-facing web apps to backend systems and API integrations."
-            ],
-            contact: [
-                "You can reach Anjul at anjulchauhan24@gmail.com 📧 or connect via WhatsApp using the button at the bottom right of the page!",
-                "Email: anjulchauhan24@gmail.com | Also, there's a WhatsApp button on this page for quick messaging! Feel free to reach out anytime.",
-                "The best ways to contact Anjul are via email (anjulchauhan24@gmail.com) or WhatsApp. She typically responds within 24 hours!"
-            ],
-            hire: [
-                "Great! Anjul is available for freelance projects and full-time opportunities. Email her at anjulchauhan24@gmail.com with your project details!",
-                "Anjul is currently open to new opportunities and collaborations! Reach out via email or WhatsApp to discuss your project requirements.",
-                "Interested in working together? Send a message to anjulchauhan24@gmail.com with details about your project, timeline, and budget!"
-            ],
-            education: [
-                "You can find Anjul's educational background in the Education section of this portfolio. Scroll down to learn more about his academic qualifications!",
-                "Check out the Education section below to see Anjul's degrees, certifications, and academic achievements.",
-                "His educational background and certifications are detailed in the Education section of this page. Keep scrolling to learn more!"
-            ],
-            location: [
-                "Anjul is based in India and is available for both remote and on-site opportunities depending on the location.",
-                "She works remotely but is open to relocation for the right opportunity. Contact her to discuss specifics!",
-                "Currently based in India with flexibility for remote work across time zones."
-            ],
-            help: [
-                "I'm here to help! You can ask me about Anjul's skills, experience, projects, education, or how to get in touch with her.",
-                "Feel free to ask about his technical expertise, work experience, education, or the best way to contact her. What would you like to know?",
-                "I can answer questions about Anjul's background, projects, skills, or connect you with her directly. What interests you most?"
-            ]
-        };
-
-        // Check for matches
-        for (const [category, words] of Object.entries(keywords)) {
-            if (words.some(keyword => msg.includes(keyword))) {
-                const categoryResponses = responses[category];
-                return categoryResponses[Math.floor(Math.random() * categoryResponses.length)];
-            }
-        }
-
-        // Default responses for unmatched queries
-        const defaultResponses = [
-            "That's an interesting question! For detailed information, I'd recommend emailing Anjul directly at anjulchauhan24@gmail.com or exploring the sections below.",
-            "I'm not sure about that specific detail, but Anjul would love to discuss it with you! Reach out via email at anjulchauhan24@gmail.com or WhatsApp.",
-            "Great question! For the most accurate answer, please contact Anjul directly. You can find his email and WhatsApp button on this page.",
-            "I can help with questions about skills, experience, projects, and contact info. Could you rephrase your question, or would you like me to connect you with Anjul directly?"
-        ];
-
-        return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
-    }
-
-    // Send message
-    function sendMessage() {
-        const msg = chatInput.value.trim();
-        if (msg) {
-            addMessage(msg, true);
-            chatInput.value = '';
-            sendBtn.disabled = true;
-            
-            // Simulate bot response with typing indicator
-            setTimeout(() => {
-                showTypingIndicator();
-                setTimeout(() => {
-                    hideTypingIndicator();
-                    const response = generateResponse(msg.toLowerCase());
-                    addMessage(response, false);
-                    sendBtn.disabled = false;
+            chatBtn.addEventListener('click', () => {
+                chatWindow.classList.toggle('hidden');
+                chatWindow.classList.toggle('active');
+                if (!chatWindow.classList.contains('hidden')) {
                     chatInput.focus();
-                }, 1000 + Math.random() * 500);
-            }, 300);
-        }
-    }
+                }
+            });
 
-    // Event listeners
-    sendBtn.addEventListener('click', sendMessage);
-    chatInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            sendMessage();
-        }
-    });
+            closeBtn.addEventListener('click', () => {
+                chatWindow.classList.add('hidden');
+                chatWindow.classList.remove('active');
+            });
 
-    // Close chat when clicking outside
-    document.addEventListener('click', (e) => {
-        if (!chatWindow.contains(e.target) && !chatBtn.contains(e.target) && !chatWindow.classList.contains('hidden')) {
-            chatWindow.classList.add('hidden');
-            chatWindow.classList.remove('active');
-        }
-    });
-})();
-</script>
+            function addMessage(text, isUser) {
+                const msgDiv = document.createElement('div');
+                msgDiv.className = `message ${isUser ? 'user' : 'bot'} flex items-start mb-4`;
+                
+                if (isUser) {
+                    msgDiv.innerHTML = `
+                        <div class="message-bubble p-3 rounded-lg shadow-sm max-w-[75%]">
+                            <p class="text-sm">${escapeHtml(text)}</p>
+                        </div>
+                        <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center ml-3 flex-shrink-0">
+                            <i class="fas fa-user text-white text-sm"></i>
+                        </div>
+                    `;
+                } else {
+                    msgDiv.innerHTML = `
+                        <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                            <i class="fas fa-robot text-white text-sm"></i>
+                        </div>
+                        <div class="message-bubble bg-white p-3 rounded-lg rounded-tl-none shadow-sm max-w-[75%]">
+                            <p class="text-gray-800 text-sm">${text}</p>
+                        </div>
+                    `;
+                }
+                
+                chatMessages.appendChild(msgDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            function escapeHtml(text) {
+                const map = {
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    '"': '&quot;',
+                    "'": '&#039;'
+                };
+                return text.replace(/[&<>"']/g, m => map[m]);
+            }
+
+            function showTypingIndicator() {
+                const typingDiv = document.createElement('div');
+                typingDiv.id = 'typingIndicator';
+                typingDiv.className = 'message bot flex items-start mb-4';
+                typingDiv.innerHTML = `
+                    <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                        <i class="fas fa-robot text-white text-sm"></i>
+                    </div>
+                    <div class="message-bubble bg-white p-3 rounded-lg rounded-tl-none shadow-sm">
+                        <div class="flex gap-1">
+                            <span class="typing-dot w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0ms"></span>
+                            <span class="typing-dot w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 150ms"></span>
+                            <span class="typing-dot w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 300ms"></span>
+                        </div>
+                    </div>
+                `;
+                chatMessages.appendChild(typingDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            function hideTypingIndicator() {
+                const indicator = document.getElementById('typingIndicator');
+                if (indicator) indicator.remove();
+            }
+
+            function generateResponse(msg) {
+                const keywords = {
+                    greeting: ['hi', 'hello', 'hey', 'greetings', 'good morning', 'good afternoon', 'good evening'],
+                    skills: ['skill', 'technology', 'tech', 'expertise', 'know', 'language', 'framework', 'stack'],
+                    experience: ['experience', 'work', 'job', 'project', 'portfolio', 'worked', 'built'],
+                    contact: ['contact', 'email', 'phone', 'reach', 'connect', 'get in touch', 'whatsapp'],
+                    hire: ['hire', 'freelance', 'available', 'job', 'opportunity', 'collaborate', 'work together'],
+                    education: ['education', 'study', 'college', 'university', 'degree', 'qualification'],
+                    location: ['where', 'location', 'based', 'from', 'live'],
+                    help: ['help', 'assist', 'support', 'question']
+                };
+
+                const responses = {
+                    greeting: [
+                        "Hello! I'm Anjul's AI assistant. I can help you learn about his skills, experience, and how to get in touch!",
+                        "Hi there! Great to meet you! Feel free to ask me about Anjul's work, projects, or how to connect with him.",
+                        "Hey! Welcome! I'm here to answer any questions about Anjul's background and expertise."
+                    ],
+                    skills: [
+                        "Anjul is proficient in modern web technologies including Python, JavaScript, Flask, and AI/ML frameworks. He specializes in full-stack development with expertise in HTML5, CSS3, Tailwind CSS, and RESTful APIs. Want to know more about specific technologies?",
+                        "His tech stack includes Python, JavaScript, Java, SQL, HTML/CSS, Flask, MongoDB, MySQL, and cloud platforms like AWS and Netlify. He's also experienced with AI/ML implementation and API development.",
+                        "Anjul excels in building scalable web applications, RESTful APIs, user authentication systems, and implementing AI-powered solutions. Check out the Skills section for detailed proficiency levels!"
+                    ],
+                    experience: [
+                        "Anjul has worked on diverse projects including an AI Object Detection System with 95% accuracy, a ChatGPT Clone using OpenAI API, the Manoi Educational Platform, and a Real Estate Website. Scroll down to the Experience section to see detailed case studies!",
+                        "He has hands-on experience with full-stack development, AI/ML implementation, and cloud deployment. His projects showcase practical problem-solving with modern development practices and include live deployments.",
+                        "Check out his portfolio to see real-world projects! He's built everything from educational platforms to AI chatbots and responsive web applications with advanced features."
+                    ],
+                    contact: [
+                        "You can reach Anjul at anjulchauhan24@gmail.com or call +91 7017575679. Also, there's a WhatsApp button below for quick messaging!",
+                        "Email: anjulchauhan24@gmail.com | Phone: +91 7017575679 | You can also use the WhatsApp button at the bottom of this page for instant contact!",
+                        "The best ways to contact Anjul are via email (anjulchauhan24@gmail.com), phone (+91 7017575679), or WhatsApp. He typically responds within 24 hours!"
+                    ],
+                    hire: [
+                        "Great! Anjul is available for freelance projects and full-time opportunities. Email him at anjulchauhan24@gmail.com or call +91 7017575679 with your project details!",
+                        "Anjul is currently open to new opportunities and collaborations! Reach out via email, phone, or WhatsApp to discuss your project requirements.",
+                        "Interested in working together? Send a message to anjulchauhan24@gmail.com or use the WhatsApp button with details about your project, timeline, and requirements!"
+                    ],
+                    education: [
+                        "Anjul completed his Bachelor of Engineering in Computer Science from Chandigarh University (2021-2025) with a CGPA of 7.15/10.0. He also has certifications from IBM (Full Stack Developer), NPTEL (IoT Elite Badge), and more!",
+                        "He holds a B.E. in Computer Science from Chandigarh University with coursework in OOP, Data Structures, Operating Systems, DBMS, and Cloud Computing. Plus multiple professional certifications!",
+                        "His educational background includes a Computer Science degree from Chandigarh University and certifications in Full Stack Development (IBM), Web Development, IoT (NPTEL Elite Badge), and Discrete Mathematics."
+                    ],
+                    location: [
+                        "Anjul is based in Mohali, Chandigarh, India and is available for both remote and on-site opportunities.",
+                        "He's located in Mohali, Chandigarh, India with flexibility for remote work across time zones.",
+                        "Currently based in Mohali, Chandigarh, India. Open to remote work and relocation for the right opportunity."
+                    ],
+                    help: [
+                        "I'm here to help! You can ask me about Anjul's skills, experience, projects, education, certifications, or how to get in touch with him.",
+                        "Feel free to ask about his technical expertise, work experience, education, achievements, or the best way to contact him. What would you like to know?",
+                        "I can answer questions about Anjul's background, projects, skills, certifications, or connect you with him directly. What interests you most?"
+                    ]
+                };
+
+                for (const [category, words] of Object.entries(keywords)) {
+                    if (words.some(keyword => msg.includes(keyword))) {
+                        const categoryResponses = responses[category];
+                        return categoryResponses[Math.floor(Math.random() * categoryResponses.length)];
+                    }
+                }
+
+                const defaultResponses = [
+                    "That's an interesting question! For detailed information, I'd recommend emailing Anjul directly at anjulchauhan24@gmail.com or exploring the sections below.",
+                    "I'm not sure about that specific detail, but Anjul would love to discuss it with you! Reach out via email at anjulchauhan24@gmail.com or WhatsApp.",
+                    "For the most accurate answer, please contact Anjul directly. You can find his contact information in the Contact section or use the WhatsApp button below.",
+                    "I can help with questions about skills, experience, projects, education, and contact info. Could you rephrase your question, or would you like me to connect you with Anjul directly?"
+                ];
+
+                return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
+            }
+
+            function sendMessage() {
+                const msg = chatInput.value.trim();
+                if (msg) {
+                    addMessage(msg, true);
+                    chatInput.value = '';
+                    sendBtn.disabled = true;
+                    
+                    setTimeout(() => {
+                        showTypingIndicator();
+                        setTimeout(() => {
+                            hideTypingIndicator();
+                            const response = generateResponse(msg.toLowerCase());
+                            addMessage(response, false);
+                            sendBtn.disabled = false;
+                            chatInput.focus();
+                        }, 1000 + Math.random() * 500);
+                    }, 300);
+                }
+            }
+
+            sendBtn.addEventListener('click', sendMessage);
+            chatInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!chatWindow.contains(e.target) && !chatBtn.contains(e.target) && !chatWindow.classList.contains('hidden')) {
+                    chatWindow.classList.add('hidden');
+                    chatWindow.classList.remove('active');
+                }
+            });
+        })();
+    </script>
 
 </body>
 </html>
-
-
-
