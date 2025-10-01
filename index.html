@@ -1249,642 +1249,696 @@
         </div>
     </footer>
 
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/917017575679?text=Hi%20Anjul%2C%20I%20visited%20your%20portfolio%20website%20and%20would%20like%20to%20connect%20with%20you." target="_blank" 
-       class="fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full shadow-lg hover:bg-green-600 transition-all duration-300 flex items-center justify-center z-40 hover:scale-110 group">
-        <i class="fab fa-whatsapp text-3xl"></i>
-        <span class="absolute right-16 bg-gray-900 text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-            Chat on WhatsApp
-        </span>
-    </a>
-
-    <!-- Chatbot Button -->
-    <button id="chatBtn" class="fixed bottom-24 right-6 bg-gradient-to-br from-blue-500 to-purple-600 text-white w-14 h-14 rounded-full shadow-lg hover:scale-110 transition-all duration-300 flex items-center justify-center z-40 group">
-        <svg viewBox="0 0 24 24" class="w-7 h-7 fill-white">
-            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/>
-            <circle cx="12" cy="10" r="1"/>
-            <circle cx="8" cy="10" r="1"/>
-            <circle cx="16" cy="10" r="1"/>
-        </svg>
-        <span class="absolute right-16 bg-gray-900 text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-            Chat with me
-        </span>
-    </button>
-
-    <!-- Scroll to Top Button -->
-    <button id="scrollToTopBtn" class="fixed bottom-6 right-24 bg-gradient-to-br from-primary to-secondary text-white w-14 h-14 rounded-full shadow-2xl hover:shadow-primary/50 transition-all duration-300 z-50 flex items-center justify-center hover:scale-110 group" style="display: none;">
-        <i class="fas fa-arrow-up text-xl"></i>
-        <span class="absolute right-16 bg-gray-900 text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none shadow-lg">
-            Back to Top
-        </span>
-    </button>
-
-    <!-- Chat Window -->
-    <div class="chat-window fixed bottom-24 right-6 w-96 h-[500px] bg-white rounded-2xl shadow-2xl hidden flex-col overflow-hidden z-50" id="chatWindow">
-        <!-- Chat Header -->
-        <div class="chat-header bg-gradient-to-r from-blue-500 to-purple-600 text-white p-5 flex justify-between items-center">
-            <div class="flex items-center">
-                <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center mr-3">
-                    <i class="fas fa-robot text-xl"></i>
+   <!-- Chatbot Button (Top) -->
+<button id="chatBtn" class="fixed bottom-44 right-6 w-16 h-20 transition-all duration-300 hover:scale-110 z-40 group" style="background: none; border: none; padding: 0;">
+    <div class="robot-container">
+        <!-- Robot Head -->
+        <div class="robot-head">
+            <div class="antenna"></div>
+            <div class="antenna-ball"></div>
+            <div class="head-main">
+                <div class="eyes">
+                    <div class="eye left-eye"></div>
+                    <div class="eye right-eye"></div>
                 </div>
-                <div>
-                    <h3 class="font-semibold text-lg">Chat Assistant</h3>
-                    <p class="text-xs text-white/80">Online</p>
-                </div>
-            </div>
-            <button id="closeBtn" class="text-white hover:bg-white/20 w-8 h-8 rounded-full flex items-center justify-center transition-colors">
-                <i class="fas fa-times text-xl"></i>
-            </button>
-        </div>
-        
-        <!-- Chat Messages Area -->
-        <div class="chat-messages flex-1 p-5 overflow-y-auto bg-gray-50" id="chatMessages">
-            <div class="message bot flex items-start mb-4">
-                <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
-                    <i class="fas fa-robot text-white text-sm"></i>
-                </div>
-                <div class="message-bubble bg-white p-3 rounded-lg rounded-tl-none shadow-sm max-w-[75%]">
-                    <p class="text-gray-800 text-sm">Hi! I'm Anjul's AI assistant. Ask me about his skills, experience, projects, or how to get in touch!</p>
-                </div>
+                <div class="mouth"></div>
             </div>
         </div>
-        
-        <!-- Chat Input Area -->
-        <div class="chat-input-area p-4 bg-white border-t border-gray-200 flex gap-2">
-            <input type="text" id="chatInput" placeholder="Ask about skills, experience, contact..." 
-                   class="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
-            <button id="sendBtn" class="bg-gradient-to-br from-blue-500 to-purple-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:scale-110 transition-transform disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
-                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
-                </svg>
-            </button>
+        <!-- Robot Body -->
+        <div class="robot-body">
+            <div class="body-panel"></div>
+        </div>
+        <!-- Robot Arms -->
+        <div class="robot-arms">
+            <div class="arm left-arm"></div>
+            <div class="arm right-arm"></div>
         </div>
     </div>
+    <span class="absolute right-20 top-1/2 -translate-y-1/2 bg-gray-900 text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none shadow-lg">
+        Chat with me
+    </span>
+</button>
 
-    <style>
-    /* WhatsApp Button Animation */
-    @keyframes pulse-green {
-        0%, 100% {
-            box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
-        }
-        50% {
-            box-shadow: 0 0 0 10px rgba(34, 197, 94, 0);
-        }
+<!-- WhatsApp Button (Middle) -->
+<a href="https://wa.me/917017575679?text=Hi%20Anjul%2C%20I%20visited%20your%20portfolio%20website%20and%20would%20like%20to%20connect%20with%20you." target="_blank" 
+   class="fixed bottom-28 right-6 bg-green-500 text-white w-14 h-14 rounded-full shadow-lg hover:bg-green-600 transition-all duration-300 flex items-center justify-center z-40 hover:scale-110 group">
+    <i class="fab fa-whatsapp text-3xl"></i>
+    <span class="absolute right-16 bg-gray-900 text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+        Chat on WhatsApp
+    </span>
+</a>
+
+<!-- Scroll to Top Button (Bottom) -->
+<button id="scrollToTopBtn" class="fixed bottom-6 right-6 bg-gradient-to-br from-primary to-secondary text-white w-14 h-14 rounded-full shadow-2xl hover:shadow-primary/50 transition-all duration-300 z-50 flex items-center justify-center hover:scale-110 group" style="display: none;">
+    <i class="fas fa-arrow-up text-xl"></i>
+    <span class="absolute right-16 bg-gray-900 text-white px-3 py-2 rounded-lg text-sm whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none shadow-lg">
+        Back to Top
+    </span>
+</button>
+
+<!-- Chat Window -->
+<div class="chat-window fixed bottom-24 right-6 w-96 h-[500px] bg-white rounded-2xl shadow-2xl hidden flex-col overflow-hidden z-50" id="chatWindow">
+    <!-- Chat Header -->
+    <div class="chat-header bg-gradient-to-r from-blue-500 to-purple-600 text-white p-5 flex justify-between items-center">
+        <div class="flex items-center">
+            <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center mr-3">
+                <i class="fas fa-robot text-xl"></i>
+            </div>
+            <div>
+                <h3 class="font-semibold text-lg">Anjul's Assistant</h3>
+                <p class="text-xs text-white/80">Online</p>
+            </div>
+        </div>
+        <button id="closeBtn" class="text-white hover:bg-white/20 w-8 h-8 rounded-full flex items-center justify-center transition-colors">
+            <i class="fas fa-times text-xl"></i>
+        </button>
+    </div>
+    
+    <!-- Chat Messages Area -->
+    <div class="chat-messages flex-1 p-5 overflow-y-auto bg-gray-50" id="chatMessages">
+        <div class="message bot flex items-start mb-4">
+            <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                <i class="fas fa-robot text-white text-sm"></i>
+            </div>
+            <div class="message-bubble bg-white p-3 rounded-lg rounded-tl-none shadow-sm max-w-[75%]">
+                <p class="text-gray-800 text-sm">Hi! I'm Anjul's AI assistant. Ask me about her skills, experience, projects, or how to get in touch!</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Chat Input Area -->
+    <div class="chat-input-area p-4 bg-white border-t border-gray-200 flex gap-2">
+        <input type="text" id="chatInput" placeholder="Ask about skills, experience, contact..." 
+               class="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
+        <button id="sendBtn" class="bg-gradient-to-br from-blue-500 to-purple-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:scale-110 transition-transform disabled:opacity-50 disabled:cursor-not-allowed flex-shrink-0">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="white">
+                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+            </svg>
+        </button>
+    </div>
+</div>
+
+<style>
+/* Robot Chatbot Button Styles */
+.robot-container {
+    position: relative;
+    width: 60px;
+    height: 75px;
+    cursor: pointer;
+}
+
+.robot-head {
+    position: relative;
+    width: 45px;
+    height: 40px;
+    margin: 0 auto;
+}
+
+.antenna {
+    position: absolute;
+    width: 3px;
+    height: 12px;
+    background: linear-gradient(180deg, #667eea, #764ba2);
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+.antenna-ball {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 50%;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 10px rgba(102, 126, 234, 0.6);
+    animation: antenna-glow 2s infinite;
+}
+
+@keyframes antenna-glow {
+    0%, 100% {
+        box-shadow: 0 0 10px rgba(102, 126, 234, 0.6);
     }
-
-    a[href*="wa.me"] {
-        animation: pulse-green 2s infinite;
+    50% {
+        box-shadow: 0 0 20px rgba(102, 126, 234, 1);
     }
+}
 
-    a[href*="wa.me"]:hover {
-        animation: none;
+.head-main {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 12px 12px 8px 8px;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.eyes {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding-top: 10px;
+}
+
+.eye {
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+    position: relative;
+    animation: robot-blink 4s infinite;
+}
+
+.eye::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #333;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes robot-blink {
+    0%, 48%, 52%, 100% {
+        transform: scaleY(1);
     }
-
-    /* Chatbot Button Animation */
-    @keyframes pulse-blue {
-        0%, 100% {
-            box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
-        }
-        50% {
-            box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
-        }
+    50% {
+        transform: scaleY(0.1);
     }
+}
 
+.mouth {
+    width: 18px;
+    height: 10px;
+    border: 2px solid white;
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.robot-body {
+    width: 40px;
+    height: 28px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    margin: 0 auto;
+    border-radius: 0 0 8px 8px;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.body-panel {
+    width: 25px;
+    height: 18px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+.body-panel::before {
+    content: '';
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: #4ade80;
+    border-radius: 50%;
+    top: 4px;
+    left: 4px;
+    animation: panel-light 1.5s infinite;
+}
+
+@keyframes panel-light {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.3;
+    }
+}
+
+.robot-arms {
+    position: absolute;
+    top: 45px;
+    width: 100%;
+}
+
+.arm {
+    position: absolute;
+    width: 8px;
+    height: 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 4px;
+    animation: wave-arm 2s infinite ease-in-out;
+}
+
+.left-arm {
+    left: 2px;
+    transform-origin: top center;
+}
+
+.right-arm {
+    right: 2px;
+    transform-origin: top center;
+    animation-delay: 1s;
+}
+
+@keyframes wave-arm {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(15deg);
+    }
+}
+
+#chatBtn:hover .robot-container {
+    animation: robot-bounce 0.6s ease-in-out;
+}
+
+@keyframes robot-bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+#chatBtn:hover .antenna-ball {
+    animation: antenna-glow 0.5s infinite;
+}
+
+#chatBtn:hover .left-arm {
+    animation: wave-fast 0.4s infinite ease-in-out;
+}
+
+#chatBtn:hover .right-arm {
+    animation: wave-fast 0.4s infinite ease-in-out;
+    animation-delay: 0.2s;
+}
+
+@keyframes wave-fast {
+    0%, 100% {
+        transform: rotate(-15deg);
+    }
+    50% {
+        transform: rotate(25deg);
+    }
+}
+
+/* WhatsApp Button Animation */
+@keyframes pulse-green {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+    }
+    50% {
+        box-shadow: 0 0 0 10px rgba(34, 197, 94, 0);
+    }
+}
+
+a[href*="wa.me"] {
+    animation: pulse-green 2s infinite;
+}
+
+a[href*="wa.me"]:hover {
+    animation: none;
+}
+
+/* Scroll to Top Button Animation */
+@keyframes pulse-primary {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 0 8px rgba(59, 130, 246, 0);
+    }
+}
+
+#scrollToTopBtn {
+    animation: pulse-primary 2s infinite;
+}
+
+#scrollToTopBtn:hover {
+    animation: none;
+}
+
+/* Chat Window Animation */
+.chat-window.active {
+    display: flex !important;
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Custom Scrollbar */
+.chat-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* User Message Styling */
+.message.user .message-bubble {
+    background: linear-gradient(135deg, #3B82F6, #8B5CF6);
+    color: white;
+    margin-left: auto;
+}
+
+.message.user {
+    flex-direction: row-reverse;
+}
+
+.message.user .message-bubble {
+    border-radius: 1rem;
+    border-top-right-radius: 0.25rem;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+    .chat-window {
+        width: calc(100vw - 2rem);
+        right: 1rem;
+        left: 1rem;
+    }
+    
+    #chatBtn, a[href*="wa.me"], #scrollToTopBtn {
+        right: 1.5rem;
+    }
+    
     #chatBtn {
-        animation: pulse-blue 2s infinite;
+        bottom: 11rem;
     }
-
-    #chatBtn:hover {
-        animation: none;
+    
+    a[href*="wa.me"] {
+        bottom: 7rem;
     }
-
-    /* Scroll to Top Button Animation */
-    @keyframes pulse-primary {
-        0%, 100% {
-            box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.5);
-        }
-        50% {
-            box-shadow: 0 0 0 8px rgba(59, 130, 246, 0);
-        }
-    }
-
+    
     #scrollToTopBtn {
-        animation: pulse-primary 2s infinite;
+        bottom: 1.5rem;
     }
+}
+</style>
 
-    #scrollToTopBtn:hover {
-        animation: none;
-    }
+<script>
+    // Chatbot Functionality
+    (function() {
+        const chatBtn = document.getElementById('chatBtn');
+        const chatWindow = document.getElementById('chatWindow');
+        const closeBtn = document.getElementById('closeBtn');
+        const sendBtn = document.getElementById('sendBtn');
+        const chatInput = document.getElementById('chatInput');
+        const chatMessages = document.getElementById('chatMessages');
 
-    /* Chat Window Animation */
-    .chat-window.active {
-        display: flex !important;
-        animation: slideUp 0.3s ease-out;
-    }
-
-    @keyframes slideUp {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    /* Custom Scrollbar */
-    .chat-messages::-webkit-scrollbar {
-        width: 6px;
-    }
-
-    .chat-messages::-webkit-scrollbar-track {
-        background: #f1f1f1;
-        border-radius: 10px;
-    }
-
-    .chat-messages::-webkit-scrollbar-thumb {
-        background: #cbd5e1;
-        border-radius: 10px;
-    }
-
-    .chat-messages::-webkit-scrollbar-thumb:hover {
-        background: #94a3b8;
-    }
-
-    /* User Message Styling */
-    .message.user .message-bubble {
-        background: linear-gradient(135deg, #3B82F6, #8B5CF6);
-        color: white;
-        margin-left: auto;
-    }
-
-    .message.user {
-        flex-direction: row-reverse;
-    }
-
-    .message.user .message-bubble {
-        border-radius: 1rem;
-        border-top-right-radius: 0.25rem;
-    }
-
-    /* Responsive Design */
-    @media (max-width: 640px) {
-        .chat-window {
-            width: calc(100vw - 2rem);
-            right: 1rem;
-            left: 1rem;
-        }
-        
-        #chatBtn, a[href*="wa.me"], #scrollToTopBtn {
-            right: 1.5rem;
-        }
-        
-        #scrollToTopBtn {
-            bottom: 10.5rem;
-        }
-        
-        #chatBtn {
-            bottom: 6rem;
-        }
-        
-        a[href*="wa.me"] {
-            bottom: 1.5rem;
-        }
-    }
-    </style>
-
-    <script>
-        window.addEventListener('scroll', () => {
-            const scrollProgress = document.getElementById('scrollProgress');
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const progress = (scrollTop / scrollHeight) * 100;
-            scrollProgress.style.width = progress + '%';
-        });
-
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const navbar = document.getElementById('navbar');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            const icon = mobileMenuBtn.querySelector('i');
-            if (mobileMenu.classList.contains('hidden')) {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            } else {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
+        chatBtn.addEventListener('click', () => {
+            chatWindow.classList.toggle('hidden');
+            chatWindow.classList.toggle('active');
+            if (!chatWindow.classList.contains('hidden')) {
+                chatInput.focus();
             }
         });
 
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const target = document.querySelector(targetId);
-                
-                if (target) {
-                    const navbarHeight = navbar.offsetHeight;
-                    const targetPosition = target.offsetTop - navbarHeight - 20;
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                    
-                    mobileMenu.classList.add('hidden');
-                    const icon = mobileMenuBtn.querySelector('i');
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                }
-            });
+        closeBtn.addEventListener('click', () => {
+            chatWindow.classList.add('hidden');
+            chatWindow.classList.remove('active');
         });
 
-        let lastScrollTop = 0;
-        window.addEventListener('scroll', () => {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        function addMessage(text, isUser) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `message ${isUser ? 'user' : 'bot'} flex items-start mb-4`;
             
-            if (scrollTop > 50) {
-                navbar.classList.add('navbar-scrolled');
+            if (isUser) {
+                msgDiv.innerHTML = `
+                    <div class="message-bubble p-3 rounded-lg shadow-sm max-w-[75%]">
+                        <p class="text-sm">${escapeHtml(text)}</p>
+                    </div>
+                    <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center ml-3 flex-shrink-0">
+                        <i class="fas fa-user text-white text-sm"></i>
+                    </div>
+                `;
             } else {
-                navbar.classList.remove('navbar-scrolled');
-            }
-            
-            if (scrollTop > lastScrollTop && scrollTop > 100) {
-                navbar.style.transform = 'translateY(-100%)';
-            } else {
-                navbar.style.transform = 'translateY(0)';
-            }
-            lastScrollTop = scrollTop;
-        });
-
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.nav-link');
-
-        const observerOptions = {
-            root: null,
-            rootMargin: '-20% 0px -70% 0px',
-            threshold: 0
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const sectionId = entry.target.getAttribute('id');
-                    navLinks.forEach(link => {
-                        link.classList.remove('active');
-                    });
-                    const activeLink = document.querySelector(`.nav-link[href="#${sectionId}"]`);
-                    if (activeLink) {
-                        activeLink.classList.add('active');
-                    }
-                }
-            });
-        }, observerOptions);
-
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-
-        function showResumePopup() {
-            const popup = document.getElementById('resumePopup');
-            popup.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function hideResumePopup() {
-            const popup = document.getElementById('resumePopup');
-            popup.classList.add('hidden');
-            document.body.style.overflow = 'auto';
-        }
-
-        document.getElementById('resumePopup').addEventListener('click', function(e) {
-            if (e.target === this) hideResumePopup();
-        });
-
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') hideResumePopup();
-        });
-
-        const countObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const counters = entry.target.querySelectorAll('[data-count]');
-                    counters.forEach(counter => {
-                        const target = parseInt(counter.getAttribute('data-count'));
-                        const suffix = counter.getAttribute('data-suffix') || '';
-                        const duration = 2000;
-                        const step = target / (duration / 16);
-                        let current = 0;
-
-                        const timer = setInterval(() => {
-                            current += step;
-                            if (current >= target) {
-                                current = target;
-                                clearInterval(timer);
-                            }
-                            counter.textContent = Math.floor(current) + suffix;
-                        }, 16);
-                    });
-                    countObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-
-        function typeWriterEffect() {
-            const nameElement = document.getElementById('typingName');
-            if (!nameElement) return;
-            
-            const name = 'Anjul Chauhan';
-            const speed = 150;
-            nameElement.textContent = '';
-            
-            let i = 0;
-            function typeChar() {
-                if (i < name.length) {
-                    nameElement.textContent += name.charAt(i);
-                    i++;
-                    setTimeout(typeChar, speed);
-                }
-            }
-            typeChar();
-        }
-
-        const typingObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        typeWriterEffect();
-                    }, 500);
-                    typingObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.3 });
-
-        const aboutSection = document.getElementById('about');
-        if (aboutSection) {
-            countObserver.observe(aboutSection);
-            typingObserver.observe(aboutSection);
-        }
-
-        const skillObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const progressBars = entry.target.querySelectorAll('.skill-progress');
-                    progressBars.forEach(bar => {
-                        const width = bar.getAttribute('data-width');
-                        setTimeout(() => {
-                            bar.style.width = width + '%';
-                        }, 500);
-                    });
-                    skillObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-
-        const skillsSection = document.getElementById('skills');
-        if (skillsSection) {
-            skillObserver.observe(skillsSection);
-        }
-
-        const animateOnScroll = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.hover-lift, .tilt-card').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'all 0.6s ease-out';
-            animateOnScroll.observe(el);
-        });
-
-        // Scroll to Top Button Functionality
-        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                scrollToTopBtn.style.display = 'flex';
-            } else {
-                scrollToTopBtn.style.display = 'none';
-            }
-        });
-
-        scrollToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        const contactForm = document.getElementById('contactForm');
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                const submitBtn = this.querySelector('button[type="submit"]');
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
-                submitBtn.disabled = true;
-            });
-        }
-
-        // Chatbot Functionality
-        (function() {
-            const chatBtn = document.getElementById('chatBtn');
-            const chatWindow = document.getElementById('chatWindow');
-            const closeBtn = document.getElementById('closeBtn');
-            const sendBtn = document.getElementById('sendBtn');
-            const chatInput = document.getElementById('chatInput');
-            const chatMessages = document.getElementById('chatMessages');
-
-            chatBtn.addEventListener('click', () => {
-                chatWindow.classList.toggle('hidden');
-                chatWindow.classList.toggle('active');
-                if (!chatWindow.classList.contains('hidden')) {
-                    chatInput.focus();
-                }
-            });
-
-            closeBtn.addEventListener('click', () => {
-                chatWindow.classList.add('hidden');
-                chatWindow.classList.remove('active');
-            });
-
-            function addMessage(text, isUser) {
-                const msgDiv = document.createElement('div');
-                msgDiv.className = `message ${isUser ? 'user' : 'bot'} flex items-start mb-4`;
-                
-                if (isUser) {
-                    msgDiv.innerHTML = `
-                        <div class="message-bubble p-3 rounded-lg shadow-sm max-w-[75%]">
-                            <p class="text-sm">${escapeHtml(text)}</p>
-                        </div>
-                        <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center ml-3 flex-shrink-0">
-                            <i class="fas fa-user text-white text-sm"></i>
-                        </div>
-                    `;
-                } else {
-                    msgDiv.innerHTML = `
-                        <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
-                            <i class="fas fa-robot text-white text-sm"></i>
-                        </div>
-                        <div class="message-bubble bg-white p-3 rounded-lg rounded-tl-none shadow-sm max-w-[75%]">
-                            <p class="text-gray-800 text-sm">${text}</p>
-                        </div>
-                    `;
-                }
-                
-                chatMessages.appendChild(msgDiv);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }
-
-            function escapeHtml(text) {
-                const map = {
-                    '&': '&amp;',
-                    '<': '&lt;',
-                    '>': '&gt;',
-                    '"': '&quot;',
-                    "'": '&#039;'
-                };
-                return text.replace(/[&<>"']/g, m => map[m]);
-            }
-
-            function showTypingIndicator() {
-                const typingDiv = document.createElement('div');
-                typingDiv.id = 'typingIndicator';
-                typingDiv.className = 'message bot flex items-start mb-4';
-                typingDiv.innerHTML = `
+                msgDiv.innerHTML = `
                     <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
                         <i class="fas fa-robot text-white text-sm"></i>
                     </div>
-                    <div class="message-bubble bg-white p-3 rounded-lg rounded-tl-none shadow-sm">
-                        <div class="flex gap-1">
-                            <span class="typing-dot w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0ms"></span>
-                            <span class="typing-dot w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 150ms"></span>
-                            <span class="typing-dot w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 300ms"></span>
-                        </div>
+                    <div class="message-bubble bg-white p-3 rounded-lg rounded-tl-none shadow-sm max-w-[75%]">
+                        <p class="text-gray-800 text-sm">${text}</p>
                     </div>
                 `;
-                chatMessages.appendChild(typingDiv);
-                chatMessages.scrollTop = chatMessages.scrollHeight;
             }
+            
+            chatMessages.appendChild(msgDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
 
-            function hideTypingIndicator() {
-                const indicator = document.getElementById('typingIndicator');
-                if (indicator) indicator.remove();
-            }
+        function escapeHtml(text) {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text.replace(/[&<>"']/g, m => map[m]);
+        }
 
-            function generateResponse(msg) {
-                const keywords = {
-                    greeting: ['hi', 'hello', 'hey', 'greetings', 'good morning', 'good afternoon', 'good evening'],
-                    skills: ['skill', 'technology', 'tech', 'expertise', 'know', 'language', 'framework', 'stack'],
-                    experience: ['experience', 'work', 'job', 'project', 'portfolio', 'worked', 'built'],
-                    contact: ['contact', 'email', 'phone', 'reach', 'connect', 'get in touch', 'whatsapp'],
-                    hire: ['hire', 'freelance', 'available', 'job', 'opportunity', 'collaborate', 'work together'],
-                    education: ['education', 'study', 'college', 'university', 'degree', 'qualification'],
-                    location: ['where', 'location', 'based', 'from', 'live'],
-                    help: ['help', 'assist', 'support', 'question']
-                };
+        function showTypingIndicator() {
+            const typingDiv = document.createElement('div');
+            typingDiv.id = 'typingIndicator';
+            typingDiv.className = 'message bot flex items-start mb-4';
+            typingDiv.innerHTML = `
+                <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center mr-3 flex-shrink-0">
+                    <i class="fas fa-robot text-white text-sm"></i>
+                </div>
+                <div class="message-bubble bg-white p-3 rounded-lg rounded-tl-none shadow-sm">
+                    <div class="flex gap-1">
+                        <span class="typing-dot w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0ms"></span>
+                        <span class="typing-dot w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 150ms"></span>
+                        <span class="typing-dot w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 300ms"></span>
+                    </div>
+                </div>
+            `;
+            chatMessages.appendChild(typingDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
 
-                const responses = {
-                    greeting: [
-                        "Hello! I'm Anjul's AI assistant. I can help you learn about his skills, experience, and how to get in touch!",
-                        "Hi there! Great to meet you! Feel free to ask me about Anjul's work, projects, or how to connect with him.",
-                        "Hey! Welcome! I'm here to answer any questions about Anjul's background and expertise."
-                    ],
-                    skills: [
-                        "Anjul is proficient in modern web technologies including Python, JavaScript, Flask, and AI/ML frameworks. He specializes in full-stack development with expertise in HTML5, CSS3, Tailwind CSS, and RESTful APIs. Want to know more about specific technologies?",
-                        "His tech stack includes Python, JavaScript, Java, SQL, HTML/CSS, Flask, MongoDB, MySQL, and cloud platforms like AWS and Netlify. He's also experienced with AI/ML implementation and API development.",
-                        "Anjul excels in building scalable web applications, RESTful APIs, user authentication systems, and implementing AI-powered solutions. Check out the Skills section for detailed proficiency levels!"
-                    ],
-                    experience: [
-                        "Anjul has worked on diverse projects including an AI Object Detection System with 95% accuracy, a ChatGPT Clone using OpenAI API, the Manoi Educational Platform, and a Real Estate Website. Scroll down to the Experience section to see detailed case studies!",
-                        "He has hands-on experience with full-stack development, AI/ML implementation, and cloud deployment. His projects showcase practical problem-solving with modern development practices and include live deployments.",
-                        "Check out his portfolio to see real-world projects! He's built everything from educational platforms to AI chatbots and responsive web applications with advanced features."
-                    ],
-                    contact: [
-                        "You can reach Anjul at anjulchauhan24@gmail.com or call +91 7017575679. Also, there's a WhatsApp button below for quick messaging!",
-                        "Email: anjulchauhan24@gmail.com | Phone: +91 7017575679 | You can also use the WhatsApp button at the bottom of this page for instant contact!",
-                        "The best ways to contact Anjul are via email (anjulchauhan24@gmail.com), phone (+91 7017575679), or WhatsApp. He typically responds within 24 hours!"
-                    ],
-                    hire: [
-                        "Great! Anjul is available for freelance projects and full-time opportunities. Email him at anjulchauhan24@gmail.com or call +91 7017575679 with your project details!",
-                        "Anjul is currently open to new opportunities and collaborations! Reach out via email, phone, or WhatsApp to discuss your project requirements.",
-                        "Interested in working together? Send a message to anjulchauhan24@gmail.com or use the WhatsApp button with details about your project, timeline, and requirements!"
-                    ],
-                    education: [
-                        "Anjul completed his Bachelor of Engineering in Computer Science from Chandigarh University (2021-2025) with a CGPA of 7.15/10.0. He also has certifications from IBM (Full Stack Developer), NPTEL (IoT Elite Badge), and more!",
-                        "He holds a B.E. in Computer Science from Chandigarh University with coursework in OOP, Data Structures, Operating Systems, DBMS, and Cloud Computing. Plus multiple professional certifications!",
-                        "His educational background includes a Computer Science degree from Chandigarh University and certifications in Full Stack Development (IBM), Web Development, IoT (NPTEL Elite Badge), and Discrete Mathematics."
-                    ],
-                    location: [
-                        "Anjul is based in Mohali, Chandigarh, India and is available for both remote and on-site opportunities.",
-                        "He's located in Mohali, Chandigarh, India with flexibility for remote work across time zones.",
-                        "Currently based in Mohali, Chandigarh, India. Open to remote work and relocation for the right opportunity."
-                    ],
-                    help: [
-                        "I'm here to help! You can ask me about Anjul's skills, experience, projects, education, certifications, or how to get in touch with him.",
-                        "Feel free to ask about his technical expertise, work experience, education, achievements, or the best way to contact him. What would you like to know?",
-                        "I can answer questions about Anjul's background, projects, skills, certifications, or connect you with him directly. What interests you most?"
-                    ]
-                };
+        function hideTypingIndicator() {
+            const indicator = document.getElementById('typingIndicator');
+            if (indicator) indicator.remove();
+        }
 
-                for (const [category, words] of Object.entries(keywords)) {
-                    if (words.some(keyword => msg.includes(keyword))) {
-                        const categoryResponses = responses[category];
-                        return categoryResponses[Math.floor(Math.random() * categoryResponses.length)];
-                    }
-                }
+        function generateResponse(msg) {
+    const keywords = {
+        greeting: ['hi', 'hello', 'hey', 'greetings', 'good morning', 'good afternoon', 'good evening', 'sup', 'yo'],
+        skills: ['skill', 'technology', 'tech', 'expertise', 'know', 'language', 'framework', 'stack', 'tools', 'proficient', 'technologies'],
+        experience: ['experience', 'work', 'job', 'project', 'portfolio', 'worked', 'built', 'developed', 'created'],
+        contact: ['contact', 'email', 'phone', 'reach', 'connect', 'get in touch', 'whatsapp', 'linkedin', 'github'],
+        hire: ['hire', 'freelance', 'available', 'job', 'opportunity', 'collaborate', 'work together', 'open to work', 'looking for'],
+        education: ['education', 'study', 'college', 'university', 'degree', 'qualification', 'cgpa', 'coursework'],
+        location: ['where', 'location', 'based', 'from', 'live', 'city'],
+        certifications: ['certificate', 'certification', 'certified', 'course', 'ibm', 'nptel', 'coursera'],
+        ai: ['ai', 'artificial intelligence', 'machine learning', 'ml', 'object detection', 'model'],
+        webdev: ['web development', 'website', 'frontend', 'backend', 'full stack', 'html', 'css', 'javascript'],
+        database: ['database', 'mongodb', 'mysql', 'sql', 'data'],
+        cloud: ['cloud', 'aws', 'netlify', 'deployment', 'deploy'],
+        manoi: ['manoi', 'educational platform', 'learning platform'],
+        chatgpt: ['chatgpt', 'chat', 'openai', 'conversational ai'],
+        interests: ['hobby', 'hobbies', 'interest', 'painting', 'dance', 'dancing', 'art'],
+        achievements: ['achievement', 'award', 'winner', 'competition'],
+        help: ['help', 'assist', 'support', 'question', 'can you']
+    };
 
-                const defaultResponses = [
-                    "That's an interesting question! For detailed information, I'd recommend emailing Anjul directly at anjulchauhan24@gmail.com or exploring the sections below.",
-                    "I'm not sure about that specific detail, but Anjul would love to discuss it with you! Reach out via email at anjulchauhan24@gmail.com or WhatsApp.",
-                    "For the most accurate answer, please contact Anjul directly. You can find his contact information in the Contact section or use the WhatsApp button below.",
-                    "I can help with questions about skills, experience, projects, education, and contact info. Could you rephrase your question, or would you like me to connect you with Anjul directly?"
-                ];
+    const responses = {
+        greeting: [
+            "Hello! I'm Anjul's AI assistant. I can help you learn about her skills, projects, education, and how to connect with her. What would you like to know?",
+            "Hi there! Thanks for visiting Anjul's portfolio. Feel free to ask me about her technical expertise, projects, or how to get in touch!",
+            "Hey! Welcome! I'm here to answer questions about Anjul's background, skills, and experience. How can I assist you today?"
+        ],
+        skills: [
+            "Anjul is skilled in Python, Java, JavaScript, SQL, HTML5, CSS3, PHP, and web frameworks like Flask, Tailwind CSS, and Bootstrap. She also works with MongoDB, MySQL, AWS, Netlify, and has experience with AI/ML and OpenAI APIs!",
+            "Her technical toolkit includes full-stack development with Python & JavaScript, database management (MongoDB, MySQL), cloud platforms (AWS, Netlify), and AI implementation. She's also proficient in Git/GitHub and Jupyter Notebook.",
+            "Anjul excels in: Programming (Python, Java, JavaScript, SQL), Web Tech (HTML5, CSS3, Tailwind, Bootstrap, Flask), Databases (MongoDB, MySQL), Cloud (AWS, Netlify), and AI/ML with OpenAI API integration!"
+        ],
+        experience: [
+            "Anjul has built impressive projects including: Manoi Educational Platform (live on Netlify), AI Object Detection System (95% accuracy), ChatGPT Clone with OpenAI API & MongoDB, and a Real Estate Website with interactive mapping. Check out her portfolio sections for details!",
+            "Her key projects showcase full-stack expertise: 1) Manoi - Educational platform with user authentication, 2) AI Object Detection - 95% accuracy model, 3) ChatGPT Clone - Flask + OpenAI API + MongoDB, 4) Real Estate Website - responsive design with search features.",
+            "She's developed diverse projects: an educational platform (Manoi), high-accuracy AI detection system (95%), conversational AI chatbot using OpenAI, and real estate website with property search. All demonstrate practical problem-solving skills!"
+        ],
+        contact: [
+            "Reach Anjul via Email: anjulchauhan24@gmail.com | Phone: +91 7017575679 | LinkedIn: linkedin.com/in/anjulchauhan24 | GitHub: github.com/anjulchauhan24 | Or click the WhatsApp button below!",
+            "Contact info: 📧 anjulchauhan24@gmail.com | 📱 +91 7017575679. You can also connect on LinkedIn (anjulchauhan24) or GitHub (anjulchauhan24), or use the WhatsApp button for instant messaging!",
+            "Get in touch with Anjul: Email at anjulchauhan24@gmail.com, call +91 7017575679, or connect via LinkedIn/GitHub (anjulchauhan24). The WhatsApp button below is perfect for quick messages!"
+        ],
+        hire: [
+            "Anjul is open to full-time opportunities and freelance projects! She's skilled in full-stack development, AI/ML, and cloud deployment. Contact her at anjulchauhan24@gmail.com or +91 7017575679 to discuss your project!",
+            "Great timing! Anjul is available for new opportunities. With expertise in Python, JavaScript, AI/ML, and full-stack development, she'd love to hear about your project. Reach out via email or WhatsApp!",
+            "Yes, Anjul is currently open to work! She brings strong full-stack development skills, AI implementation experience, and a proven track record. Email anjulchauhan24@gmail.com with project details!"
+        ],
+        education: [
+            "Anjul holds a Bachelor of Engineering in Computer Science from Chandigarh University (2021-2025). Her coursework includes Object Oriented Programming, Data Structures & Algorithms, Operating Systems, Computer Networking, DBMS, and Cloud Computing.",
+            "She's a B.E. Computer Science graduate from Chandigarh University (2021-2025). Core subjects: Data Structures & Algorithms, Object Oriented Programming, Operating Systems, Computer Networking, Database Management, and Cloud Computing.",
+            "Education: Bachelor of Engineering in Computer Science from Chandigarh University (2021-2025) | Key courses: OOP, DSA, Operating Systems, DBMS, Computer Networking, Cloud Computing | Previous schooling: Mount Litera Zee School, Haridwar"
+        ],
+        location: [
+            "Anjul is based in Mohali, Chandigarh, India. She's available for remote work opportunities and is open to relocation for the right position.",
+            "She's located in Mohali, Chandigarh, India and flexible with remote work arrangements across different time zones.",
+            "Currently in Mohali, Chandigarh, India. Open to both remote and on-site opportunities!"
+        ],
+        certifications: [
+            "Anjul's certifications include: IBM Full Stack Software Developer (Coursera), HTML/CSS/JavaScript for Web Developers (Coursera), Web Development (Bharat Intern), IoT Elite Badge (NPTEL), and Discrete Mathematics (NPTEL).",
+            "She holds certifications in: Full Stack Development from IBM, Web Development from Coursera & Bharat Intern, Internet of Things with Elite Badge from NPTEL (Swayam), and Discrete Mathematics from NPTEL.",
+            "Certified in: IBM Full Stack Software Developer | HTML, CSS & JavaScript for Web Developers | Web Development (Bharat Intern) | IoT with Elite Badge (NPTEL) | Discrete Mathematics (NPTEL)"
+        ],
+        ai: [
+            "Anjul developed an AI Object Detection System achieving 95% accuracy using Python and AI frameworks! She analyzed data with Jupyter Notebook and implemented Python automation for enhanced model performance. She also built a ChatGPT Clone using OpenAI API.",
+            "Her AI experience includes: Object Detection model (95% accuracy) using Python & Jupyter Notebook, ChatGPT Clone with OpenAI API integration, and hands-on experience with AI/ML frameworks and data analysis workflows.",
+            "Impressive AI work! She created a high-accuracy object detection system (95%) with Python, utilized Jupyter for data analysis & visualization, and built a conversational AI using OpenAI's API with Flask backend."
+        ],
+        webdev: [
+            "Anjul specializes in full-stack web development using HTML5, CSS3, JavaScript, Python (Flask), Tailwind CSS, and Bootstrap. She's built multiple projects including Manoi Educational Platform, ChatGPT Clone, and Real Estate Website with responsive designs!",
+            "Her web dev skills include: Frontend (HTML5, CSS3, JavaScript, Tailwind, Bootstrap), Backend (Python, Flask, PHP), and databases (MongoDB, MySQL). She creates responsive, user-centric applications with modern frameworks.",
+            "She's a full-stack developer proficient in: HTML5, CSS3, JavaScript, Tailwind CSS, Bootstrap for frontend | Flask, Python, PHP for backend | Plus RESTful APIs and user authentication systems!"
+        ],
+        database: [
+            "Anjul works with both SQL and NoSQL databases including MongoDB, MySQL, and SQL Server. She's implemented database schemas for projects like her ChatGPT Clone with persistent conversation storage and the Manoi platform with user management.",
+            "Database expertise: MongoDB (used in ChatGPT Clone for conversation storage), MySQL (structured data management), SQL programming, and database design for scalable applications. She also knows Git/GitHub for version control.",
+            "She's skilled in database management with MongoDB and MySQL. Her ChatGPT project uses MongoDB for real-time chat data, while she applies SQL for structured data queries and management."
+        ],
+        cloud: [
+            "Anjul has cloud deployment experience with AWS and Netlify. Her Manoi Educational Platform is deployed on Netlify for optimized performance, and she's familiar with cloud computing concepts and deployment workflows.",
+            "Cloud skills: AWS (Amazon Web Services) and Netlify deployment. She's successfully deployed the Manoi platform on Netlify and has coursework in Cloud Computing from Chandigarh University.",
+            "She works with AWS and Netlify for cloud deployment. The Manoi Educational Platform is live on Netlify with optimized performance and accessibility!"
+        ],
+        manoi: [
+            "Manoi is Anjul's ongoing educational platform project (live at manoi.netlify.app). It features user authentication, course management, and responsive UI built with HTML and Tailwind CSS. The platform provides online learning resources with focus on user experience!",
+            "The Manoi Educational Platform (manoi.netlify.app) is a full-stack project offering online learning resources. Features include: user authentication, course management system, responsive design with Tailwind CSS, and optimized deployment on Netlify.",
+            "Check out Manoi at manoi.netlify.app! It's an educational platform she's developing with user authentication, course management, and modern web tech (HTML, Tailwind CSS). Static frontend deployed on Netlify for great performance!"
+        ],
+        chatgpt: [
+            "Anjul built a ChatGPT Clone using OpenAI API, Flask backend, and MongoDB database. The application features real-time chat functionality, responsive design (HTML + Tailwind CSS), and persistent conversation storage for seamless user experience!",
+            "Her ChatGPT Clone project integrates: OpenAI API for conversational AI, Flask for backend logic, MongoDB for storing conversations, and responsive frontend with HTML & Tailwind CSS. It supports real-time chat with data persistence!",
+            "The ChatGPT Clone showcases her full-stack skills: OpenAI API integration, Flask backend, MongoDB database for conversation storage, plus responsive UI. It demonstrates practical AI implementation with modern web technologies!"
+        ],
+        interests: [
+            "Beyond coding, Anjul is passionate about painting, dancing, and traveling! She's an active member of the Art and Event Club CSE at Chandigarh University, has won semi-classical & freestyle dance competitions, and earned multiple awards in drawing, painting, and craft!",
+            "Anjul's creative side: She loves painting, dancing (winner in semi-classical & freestyle competitions), and traveling. She's actively involved in the Art and Event Club at her university and has won several art competitions!",
+            "Her interests include: Technology Innovation, Painting & Art (multiple competition awards), Dancing (semi-classical & freestyle winner), Traveling, and Open Source Contribution. She balances technical skills with creative pursuits!"
+        ],
+        achievements: [
+            "Anjul has impressive achievements: Winner in semi-classical & freestyle dance competitions, multiple awards in drawing/painting/craft competitions, and active participation in Art and Event Club CSE at Chandigarh University. Technically, she achieved 95% accuracy in her AI object detection project!",
+            "Key achievements: 95% accuracy AI Object Detection System, Winner in dance competitions (semi-classical & freestyle), Multiple art competition awards (drawing, painting, craft), Active Art & Event Club member, and multiple professional certifications!",
+            "She's achieved: High-accuracy AI model (95%), Dance competition winner, Art competition awards, Active club participation at university, IBM Full Stack certification, and NPTEL Elite Badge in IoT!"
+        ],
+        help: [
+            "I can help with questions about: Anjul's technical skills & projects, education & certifications, work experience, contact information, availability for opportunities, or her interests & achievements. What would you like to know?",
+            "Feel free to ask about: Her programming skills (Python, JavaScript, etc.), projects (Manoi, AI Detection, ChatGPT Clone), education from Chandigarh University, certifications, or how to contact her. What interests you?",
+            "I'm here to answer questions about Anjul's: Technical expertise & tech stack, Project portfolio & experience, Educational background, Professional certifications, Contact details, or Creative interests. How can I assist?"
+        ]
+    };
 
-                return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
-            }
+    // Check for specific keywords
+    for (const [category, words] of Object.entries(keywords)) {
+        if (words.some(keyword => msg.includes(keyword))) {
+            const categoryResponses = responses[category];
+            return categoryResponses[Math.floor(Math.random() * categoryResponses.length)];
+        }
+    }
 
-            function sendMessage() {
-                const msg = chatInput.value.trim();
-                if (msg) {
-                    addMessage(msg, true);
-                    chatInput.value = '';
-                    sendBtn.disabled = true;
-                    
+    // Default responses for unrecognized queries
+    const defaultResponses = [
+        "I'd love to help! I can answer questions about Anjul's skills, projects, education, certifications, or contact info. Could you be more specific about what you'd like to know?",
+        "That's interesting! For detailed information, try asking about her technical skills, specific projects (Manoi, AI Detection, ChatGPT Clone), education, or how to contact her. What would you like to explore?",
+        "I'm not sure about that specific detail, but I can tell you about Anjul's programming expertise, project portfolio, certifications, or how to reach her. What aspect interests you most?",
+        "Good question! I specialize in answering about: her technical skills & tools, project experience & achievements, educational background, certifications, or contact information. What would help you most?"
+    ];
+
+    return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
+}
+
+        function sendMessage() {
+            const msg = chatInput.value.trim();
+            if (msg) {
+                addMessage(msg, true);
+                chatInput.value = '';
+                sendBtn.disabled = true;
+                
+                setTimeout(() => {
+                    showTypingIndicator();
                     setTimeout(() => {
-                        showTypingIndicator();
-                        setTimeout(() => {
-                            hideTypingIndicator();
-                            const response = generateResponse(msg.toLowerCase());
-                            addMessage(response, false);
-                            sendBtn.disabled = false;
-                            chatInput.focus();
-                        }, 1000 + Math.random() * 500);
-                    }, 300);
-                }
+                        hideTypingIndicator();
+                        const response = generateResponse(msg.toLowerCase());
+                        addMessage(response, false);
+                        sendBtn.disabled = false;
+                        chatInput.focus();
+                    }, 1000 + Math.random() * 500);
+                }, 300);
             }
+        }
 
-            sendBtn.addEventListener('click', sendMessage);
-            chatInput.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    sendMessage();
-                }
-            });
+        sendBtn.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
 
-            document.addEventListener('click', (e) => {
-                if (!chatWindow.contains(e.target) && !chatBtn.contains(e.target) && !chatWindow.classList.contains('hidden')) {
-                    chatWindow.classList.add('hidden');
-                    chatWindow.classList.remove('active');
-                }
-            });
-        })();
-    </script>
+        document.addEventListener('click', (e) => {
+            if (!chatWindow.contains(e.target) && !chatBtn.contains(e.target) && !chatWindow.classList.contains('hidden')) {
+                chatWindow.classList.add('hidden');
+                chatWindow.classList.remove('active');
+            }
+        });
+    })();
 
+    // Scroll to Top Button Functionality
+    const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+    
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            scrollToTopBtn.style.display = 'flex';
+        } else {
+            scrollToTopBtn.style.display = 'none';
+        }
+    });
+
+    scrollToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+</script>
 </body>
 </html>
