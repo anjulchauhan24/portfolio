@@ -1665,7 +1665,7 @@
 
         skillItems.forEach(item => skillObserver.observe(item));
 
-        // Chatbot Functionality
+       // Enhanced Chatbot Functionality with Context Memory
         (function() {
             const chatBtn = document.getElementById('chatBtn');
             const chatWindow = document.getElementById('chatWindow');
@@ -1673,6 +1673,12 @@
             const sendBtn = document.getElementById('sendBtn');
             const chatInput = document.getElementById('chatInput');
             const chatMessages = document.getElementById('chatMessages');
+
+            let conversationContext = {
+                askedAbout: [],
+                lastTopic: null,
+                messageCount: 0
+            };
 
             chatBtn.addEventListener('click', () => {
                 chatWindow.classList.toggle('hidden');
@@ -1726,32 +1732,175 @@
                 return text.replace(/[&<>"']/g, m => map[m]);
             }
 
-            function generateResponse(msg) {
-                const keywords = {
-                    greeting: ['hi', 'hello', 'hey'],
-                    skills: ['skill', 'technology', 'tech', 'know'],
-                    experience: ['experience', 'work', 'project'],
-                    contact: ['contact', 'email', 'phone', 'reach'],
-                    hire: ['hire', 'available', 'job']
-                };
-
-                for (const [category, words] of Object.entries(keywords)) {
-                    if (words.some(keyword => msg.includes(keyword))) {
-                        if (category === 'greeting') {
-                            return "Hello! I'm Anjul's AI assistant. I can help you learn about her skills, projects, education, and how to connect with her. What would you like to know?";
-                        } else if (category === 'skills') {
-                            return "Anjul is skilled in Python, Java, JavaScript, HTML5, CSS3, Flask, Tailwind CSS, MongoDB, MySQL, AWS, Netlify, and AI/ML. She also has experience with RESTful APIs and user authentication!";
-                        } else if (category === 'experience') {
-                            return "Anjul has built impressive projects including: Manoi Educational Platform (live on Netlify), AI Object Detection System (95% accuracy), ChatGPT Clone with OpenAI API, and a Real Estate Website!";
-                        } else if (category === 'contact') {
-                            return "You can reach Anjul via Email: anjulchauhan24@gmail.com | Phone: +91 7017575679 | LinkedIn: anjulchauhan24 | GitHub: anjulchauhan24. Or use the WhatsApp button below!";
-                        } else if (category === 'hire') {
-                            return "Anjul is open to new opportunities! She's skilled in full-stack development, AI/ML, and cloud deployment. Contact her at anjulchauhan24@gmail.com to discuss your project!";
+            function levenshteinDistance(str1, str2) {
+                const matrix = [];
+                for (let i = 0; i <= str2.length; i++) {
+                    matrix[i] = [i];
+                }
+                for (let j = 0; j <= str1.length; j++) {
+                    matrix[0][j] = j;
+                }
+                for (let i = 1; i <= str2.length; i++) {
+                    for (let j = 1; j <= str1.length; j++) {
+                        if (str2.charAt(i - 1) === str1.charAt(j - 1)) {
+                            matrix[i][j] = matrix[i - 1][j - 1];
+                        } else {
+                            matrix[i][j] = Math.min(
+                                matrix[i - 1][j - 1] + 1,
+                                matrix[i][j - 1] + 1,
+                                matrix[i - 1][j] + 1
+                            );
                         }
                     }
                 }
+                return matrix[str2.length][str1.length];
+            }
 
-                return "I can help with questions about Anjul's skills, projects, education, certifications, or contact info. What would you like to know?";
+            function fuzzyMatch(word, targetWords, threshold = 2) {
+                for (const target of targetWords) {
+                    const distance = levenshteinDistance(word.toLowerCase(), target.toLowerCase());
+                    if (distance <= threshold) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+
+            function generateResponse(msg) {
+                conversationContext.messageCount++;
+                
+                const keywords = {
+                    greeting: ['hi', 'hello', 'hey', 'helo', 'hii', 'hola', 'greetings', 'good morning', 'good afternoon', 'good evening'],
+                    thanks: ['thank', 'thanks', 'thankyou', 'thx', 'appreciate', 'grateful'],
+                    skills: ['skill', 'technology', 'tech', 'know', 'programming', 'language', 'framework', 'stack', 'tools', 'expertise', 'proficient', 'experienced'],
+                    python: ['python', 'py', 'django', 'flask'],
+                    javascript: ['javascript', 'js', 'node', 'react', 'vue'],
+                    web: ['web', 'html', 'css', 'frontend', 'front-end', 'backend', 'back-end', 'fullstack', 'full-stack'],
+                    ai: ['ai', 'ml', 'machine learning', 'artificial intelligence', 'deep learning', 'neural', 'model'],
+                    database: ['database', 'db', 'sql', 'mysql', 'mongodb', 'mongo', 'data'],
+                    experience: ['experience', 'work', 'project', 'built', 'developed', 'created', 'portfolio'],
+                    education: ['education', 'degree', 'university', 'college', 'study', 'studied', 'graduate', 'qualification'],
+                    contact: ['contact', 'email', 'phone', 'reach', 'connect', 'message', 'call', 'mail'],
+                    hire: ['hire', 'available', 'job', 'opportunity', 'position', 'work', 'freelance', 'consulting'],
+                    location: ['location', 'where', 'based', 'live', 'from'],
+                    certification: ['certification', 'certificate', 'certified', 'course', 'training'],
+                    github: ['github', 'git', 'repository', 'repo', 'code'],
+                    resume: ['resume', 'cv', 'curriculum vitae'],
+                    hobbies: ['hobby', 'hobbies', 'interest', 'interests', 'free time', 'passion']
+                };
+
+                const words = msg.split(/\s+/);
+                let matchedCategory = null;
+                let highestMatchCount = 0;
+
+                for (const [category, keywordList] of Object.entries(keywords)) {
+                    let matchCount = 0;
+                    for (const word of words) {
+                        if (keywordList.some(kw => word.includes(kw)) || fuzzyMatch(word, keywordList)) {
+                            matchCount++;
+                        }
+                    }
+                    if (matchCount > highestMatchCount) {
+                        highestMatchCount = matchCount;
+                        matchedCategory = category;
+                    }
+                }
+
+                if (matchedCategory) {
+                    conversationContext.lastTopic = matchedCategory;
+                    if (!conversationContext.askedAbout.includes(matchedCategory)) {
+                        conversationContext.askedAbout.push(matchedCategory);
+                    }
+
+                    const responses = {
+                        greeting: [
+                            "Hello! I'm Anjul's AI assistant. I can help you learn about her skills, projects, education, and how to connect with her. What would you like to know?",
+                            "Hi there! Thanks for visiting Anjul's portfolio. I'm here to answer any questions about her experience, skills, or projects. How can I help?",
+                            "Hey! Great to meet you. I can tell you all about Anjul's work in full-stack development, AI/ML, and her amazing projects. What interests you?"
+                        ],
+                        thanks: [
+                            "You're welcome! Is there anything else you'd like to know about Anjul?",
+                            "Happy to help! Feel free to ask about her projects, skills, or how to get in touch.",
+                            "My pleasure! Let me know if you have any other questions."
+                        ],
+                        skills: [
+                            "Anjul has a strong technical skillset! She's proficient in:<br>• <strong>Programming:</strong> Python, Java, JavaScript, PHP, SQL<br>• <strong>Web:</strong> HTML5, CSS3, Tailwind CSS, Bootstrap, Flask<br>• <strong>Databases:</strong> MongoDB, MySQL<br>• <strong>Cloud:</strong> AWS, Netlify<br>• <strong>AI/ML:</strong> TensorFlow, OpenAI API, Jupyter<br><br>Want to know more about any specific area?",
+                            "Her tech stack is impressive! Anjul specializes in full-stack development with Python and JavaScript, has strong experience with RESTful APIs, user authentication, and cloud deployment. She's also skilled in AI/ML with 95% model accuracy achievements!",
+                            "Anjul brings expertise in modern web technologies, AI/ML implementation, and cloud services. She's built complete applications from database design to frontend UI. Which technology are you most interested in?"
+                        ],
+                        python: [
+                            "Anjul is highly skilled in Python! She's used it for:<br>• AI/ML model development (95% accuracy)<br>• Flask web applications<br>• Backend API development<br>• Data analysis and visualization with Jupyter<br><br>She leverages Python for both web development and machine learning projects.",
+                            "Python is one of Anjul's core strengths! She's built AI models, web applications with Flask, and handles data processing efficiently. Her Python expertise spans from web backends to machine learning implementations."
+                        ],
+                        javascript: [
+                            "Anjul has strong JavaScript skills! She uses it for:<br>• Interactive frontend development<br>• DOM manipulation and event handling<br>• Integration with REST APIs<br>• Building responsive user interfaces<br><br>Check out her projects to see JavaScript in action!",
+                            "JavaScript is a key part of Anjul's skillset. She creates dynamic, interactive web experiences and integrates frontend with backend APIs seamlessly."
+                        ],
+                        web: [
+                            "Anjul is a full-stack web developer with expertise in:<br>• <strong>Frontend:</strong> HTML5, CSS3, Tailwind CSS, Bootstrap, responsive design<br>• <strong>Backend:</strong> Flask, RESTful APIs, user authentication<br>• <strong>Databases:</strong> MongoDB, MySQL<br>• <strong>Deployment:</strong> AWS, Netlify<br><br>She builds complete web applications from ground up!",
+                            "Web development is Anjul's forte! She creates responsive, user-friendly interfaces and robust backend systems. Her Manoi Educational Platform is live on Netlify - a great example of her full-stack capabilities!"
+                        ],
+                        ai: [
+                            "Anjul has strong AI/ML expertise! Her achievements include:<br>• Developed an AI Object Detection System with <strong>95% accuracy</strong><br>• Built a ChatGPT Clone using OpenAI API<br>• Experience with TensorFlow and neural networks<br>• Data analysis and model training<br><br>AI/ML is definitely one of her passions!",
+                            "Machine learning is where Anjul really shines! She's achieved 95% accuracy in her object detection model and has hands-on experience with modern AI frameworks. She combines ML with web development to create intelligent applications."
+                        ],
+                        database: [
+                            "Anjul has solid database skills! She works with:<br>• <strong>MongoDB:</strong> NoSQL database for flexible data storage<br>• <strong>MySQL:</strong> Relational database management<br>• Database design and optimization<br>• Integration with backend APIs<br><br>She understands both SQL and NoSQL paradigms well!",
+                            "Database management is a key strength! Anjul designs efficient database schemas, implements CRUD operations, and ensures data security in her applications. She's comfortable with both MongoDB and MySQL."
+                        ],
+                        experience: [
+                            "Anjul has built some impressive projects!<br><br><strong>Featured Work:</strong><br>• <strong>Manoi Educational Platform</strong> - Full-stack learning platform (live on Netlify)<br>• <strong>AI Object Detection</strong> - 95% accuracy ML model<br>• <strong>ChatGPT Clone</strong> - Using OpenAI API, Flask, MongoDB<br>• <strong>Real Estate Website</strong> - Responsive design with map integration<br><br>She also completed a Web Development Internship at Bharat Intern!",
+                            "Her project portfolio demonstrates real-world skills! From AI systems to full-stack web apps, Anjul has hands-on experience building production-ready applications. Check out Manoi on Netlify to see her work live!",
+                            "Anjul's experience spans full-stack development, AI/ML implementation, and cloud deployment. She's built educational platforms, intelligent systems, and responsive websites. Want details about a specific project?"
+                        ],
+                        education: [
+                            "Anjul holds a <strong>Bachelor of Engineering in Computer Science</strong> from Chandigarh University (2021-2025) with a CGPA of 7.15/10.0.<br><br>Her coursework included: OOP, Data Structures & Algorithms, Operating Systems, Computer Networking, DBMS, and Cloud Computing.<br><br>She's also earned certifications from IBM (Full Stack Developer), NPTEL, and completed various online courses!",
+                            "She's a Computer Science graduate from Chandigarh University with strong fundamentals in algorithms, databases, and system design. Plus, she holds an IBM Full Stack Developer certification and multiple other credentials!"
+                        ],
+                        contact: [
+                            "You can reach Anjul through multiple channels:<br><br>📧 <strong>Email:</strong> anjulchauhan24@gmail.com<br>📱 <strong>Phone:</strong> +91 7017575679<br>💼 <strong>LinkedIn:</strong> anjulchauhan24<br>💻 <strong>GitHub:</strong> anjulchauhan24<br>💬 <strong>WhatsApp:</strong> Click the green button below!<br><br>She's very responsive and would love to hear from you!",
+                            "Getting in touch is easy! Email her at anjulchauhan24@gmail.com or call +91 7017575679. You can also connect on LinkedIn (anjulchauhan24) or message via WhatsApp using the button at the bottom right!",
+                            "Anjul is just a message away! Prefer email? anjulchauhan24@gmail.com. Want to chat? Use the WhatsApp button. Professional networking? Find her on LinkedIn as anjulchauhan24. Choose what works best for you!"
+                        ],
+                        hire: [
+                            "Great timing! Anjul is <strong>open to new opportunities</strong> and freelance work.<br><br>She specializes in:<br>• Full-stack web development<br>• AI/ML solutions<br>• Cloud deployment<br>• API development<br><br>📧 Contact her at: anjulchauhan24@gmail.com<br>📱 Call: +91 7017575679<br><br>Let's discuss your project!",
+                            "Anjul is available for full-time positions, freelance projects, and consulting work! She brings expertise in modern web technologies and AI/ML. Reach out at anjulchauhan24@gmail.com to discuss how she can contribute to your team!",
+                            "Looking to hire? Anjul would love to hear about your opportunity! She's skilled in full-stack development, has proven AI/ML experience, and delivers quality work. Contact her directly: anjulchauhan24@gmail.com or +91 7017575679"
+                        ],
+                        location: [
+                            "Anjul is based in <strong>Mohali, Chandigarh, India</strong>. She's open to remote work opportunities as well as positions in the Chandigarh region!",
+                            "She's located in Mohali, Chandigarh - one of India's major tech hubs! Anjul is flexible with remote work and local opportunities."
+                        ],
+                        certification: [
+                            "Anjul holds several professional certifications:<br><br>✓ <strong>IBM Full Stack Developer</strong> (Coursera)<br>✓ <strong>Web Development Certification</strong><br>✓ <strong>IoT Elite Badge</strong> (NPTEL/Swayam)<br>✓ <strong>Discrete Mathematics</strong> (NPTEL)<br>✓ <strong>Web Development Internship</strong> (Bharat Intern)<br><br>She's committed to continuous learning and professional development!",
+                            "Her credentials are solid! Anjul has earned certifications from IBM, NPTEL, and completed a professional internship. These validate her technical skills and dedication to growth."
+                        ],
+                        github: [
+                            "Check out Anjul's GitHub profile: <strong>github.com/anjulchauhan24</strong><br><br>You'll find her projects including:<br>• Manoi Educational Platform<br>• AI Object Detection System<br>• ChatGPT Clone<br>• Real Estate Website<br>• And more!<br><br>Her code demonstrates clean practices and modern development techniques.",
+                            "Her GitHub (anjulchauhan24) showcases real projects with production-ready code. It's a great way to see her coding style and technical approach. Take a look!"
+                        ],
+                        resume: [
+                            "You can view or download Anjul's resume directly from the Resume section above! It includes comprehensive details about her education, skills, projects, and certifications. Click the 'View Resume' or 'Download Resume' buttons to access it!",
+                            "Her resume is available in the Resume section of this portfolio! You can preview it online or download a PDF copy. It provides a detailed overview of her qualifications and experience."
+                        ],
+                        hobbies: [
+                            "Beyond coding, Anjul has diverse interests!<br><br>🎨 <strong>Creative Arts:</strong> Award-winning painter and dancer (multiple competition wins)<br>✈️ <strong>Travel:</strong> Passionate about exploring new cultures<br>🚀 <strong>Tech Innovation:</strong> Always learning emerging technologies<br>👥 <strong>Community:</strong> Active in Art and Event Club CSE at university<br><br>These creative pursuits fuel her innovation in tech!",
+                            "Anjul is wonderfully well-rounded! She's won dance and painting competitions, loves to travel, and stays active in her university's art community. This creativity enhances her problem-solving in development!"
+                        ]
+                    };
+
+                    const responseArray = responses[matchedCategory];
+                    const response = responseArray[Math.floor(Math.random() * responseArray.length)];
+                    return response;
+                }
+
+                const contextResponses = [
+                    "I can help with questions about Anjul's skills, projects, education, certifications, or contact info. What would you like to know?",
+                    "I'm here to answer questions about Anjul's experience, technical expertise, or how to connect with her. What interests you?",
+                    "Feel free to ask about Anjul's programming skills, completed projects, qualifications, or how to get in touch!"
+                ];
+                
+                return contextResponses[conversationContext.messageCount % contextResponses.length];
             }
 
             function sendMessage() {
