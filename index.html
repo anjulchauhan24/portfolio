@@ -1413,7 +1413,8 @@
                 </div>
                 
                 <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-8 border border-white/20 hover-lift">
-                    <form id="contactForm" class="space-y-6">
+                    <form id="contactForm" name="contact" method="POST" netlify netlify-honeypot="bot-field" class="space-y-6">
+                        <input type="hidden" name="bot-field">
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
                                 <label for="firstName" class="block text-sm font-medium mb-2">First Name</label>
