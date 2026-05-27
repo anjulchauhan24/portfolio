@@ -474,183 +474,6 @@
                 left: 1rem;
             }
         }
-
-        /* ── Stacked Project Cards (Sithafal-style) ── */
-        .project-stack {
-            position: relative;
-            max-width: 900px;
-            margin: 0 auto;
-            padding-top: 44px;
-            height: 500px;
-        }
-        .project-card-deck {
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            height: 456px;
-            border-radius: 28px;
-            transition: transform 0.55s cubic-bezier(0.23, 1, 0.32, 1),
-                        box-shadow 0.55s ease,
-                        opacity 0.55s ease;
-            overflow: hidden;
-        }
-        .project-card-deck[data-pos="0"] {
-            z-index: 30;
-            transform: translateY(0) scaleX(1);
-            box-shadow: 0 24px 64px rgba(0,0,0,0.13), 0 8px 24px rgba(0,0,0,0.07);
-        }
-        .project-card-deck[data-pos="1"] {
-            z-index: 20;
-            transform: translateY(-18px) scaleX(0.953);
-            box-shadow: 0 12px 32px rgba(0,0,0,0.08);
-            cursor: pointer;
-        }
-        .project-card-deck[data-pos="2"] {
-            z-index: 10;
-            transform: translateY(-34px) scaleX(0.907);
-            box-shadow: 0 6px 18px rgba(0,0,0,0.05);
-            cursor: pointer;
-        }
-        .project-card-deck[data-pos="3"] {
-            z-index: 0;
-            transform: translateY(-44px) scaleX(0.88);
-            opacity: 0;
-            pointer-events: none;
-        }
-        .proj-card-body {
-            display: flex;
-            align-items: center;
-            height: 100%;
-            padding: 52px 64px;
-            gap: 48px;
-        }
-        .proj-card-text { flex: 1; min-width: 0; }
-        .proj-category {
-            font-size: 0.68rem;
-            font-weight: 700;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: #6b7280;
-            margin-bottom: 12px;
-            display: block;
-        }
-        .proj-title {
-            font-size: 2.3rem;
-            line-height: 1.15;
-            color: #111827;
-            margin-bottom: 16px;
-            font-weight: 300;
-        }
-        .proj-title em     { font-style: italic; }
-        .proj-title strong { font-weight: 800; }
-        .proj-desc {
-            font-size: 0.91rem;
-            color: #6b7280;
-            line-height: 1.75;
-            margin-bottom: 20px;
-            max-width: 460px;
-        }
-        .proj-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 26px; }
-        .proj-tag {
-            padding: 4px 12px;
-            border-radius: 9999px;
-            font-size: 0.71rem;
-            font-weight: 500;
-        }
-        .proj-links { display: flex; align-items: center; gap: 20px; }
-        .proj-link-main {
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: #111827;
-            border-bottom: 2px solid #111827;
-            padding-bottom: 2px;
-            transition: color 0.2s, border-color 0.2s;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-        }
-        .proj-link-main:hover { color: #3B82F6; border-color: #3B82F6; }
-        .proj-link-gh {
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: #9ca3af;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            transition: color 0.2s;
-        }
-        .proj-link-gh:hover { color: #374151; }
-        .proj-visual {
-            flex-shrink: 0;
-            width: 190px;
-            height: 190px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .proj-orb { position: relative; width: 148px; height: 148px; }
-        .proj-orb-r1 {
-            position: absolute;
-            inset: -18px;
-            border-radius: 50%;
-            border-width: 3px;
-            border-style: solid;
-            opacity: 0.22;
-            animation: rotate-ring 12s linear infinite;
-        }
-        .proj-orb-r2 {
-            position: absolute;
-            inset: -8px;
-            border-radius: 50%;
-            border-width: 2px;
-            border-style: dashed;
-            opacity: 0.32;
-            animation: counter-rotate 8s linear infinite;
-        }
-        .proj-orb-core {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 16px 48px rgba(0,0,0,0.22);
-            color: white;
-            font-size: 3.2rem;
-        }
-        .proj-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 9999px;
-            background: #d1d5db;
-            border: none;
-            outline: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            padding: 0;
-            display: inline-block;
-        }
-        .proj-dot.active {
-            background: #3B82F6;
-            width: 28px;
-        }
-        @keyframes rotate-ring    { to { transform: rotate(360deg); } }
-        @keyframes counter-rotate { to { transform: rotate(-360deg); } }
-        @media (max-width: 768px) {
-            .project-stack        { height: 600px; padding-top: 44px; }
-            .project-card-deck    { height: 556px; }
-            .proj-card-body       { padding: 32px 28px; flex-direction: column; gap: 20px; overflow-y: auto; justify-content: flex-start; padding-top: 32px; }
-            .proj-title           { font-size: 1.65rem; }
-            .proj-visual          { width: 120px; height: 120px; align-self: center; }
-            .proj-orb             { width: 96px; height: 96px; }
-            .proj-orb-core        { font-size: 2.1rem; }
-            .proj-orb-r1          { inset: -12px; }
-            .proj-orb-r2          { inset: -5px; }
-            .proj-desc            { max-width: 100%; }
-        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -1353,27 +1176,76 @@
                 </div>
             </div>
 
-            <!-- Featured Projects — Stacked Card Style -->
             <div class="mb-16">
-                <h3 class="text-3xl font-bold text-gray-900 text-center mb-3">Featured Projects</h3>
-                <p class="text-center text-gray-400 text-sm mb-16">Click the cards or use the arrows to explore each project</p>
+                <h3 class="text-3xl font-bold text-gray-900 text-center mb-8">Featured Projects</h3>
+                <div class="grid lg:grid-cols-2 gap-8">
+                    
+                    <div class="bg-white p-8 rounded-2xl shadow-lg hover-lift group tilt-card">
+                        <div class="flex items-start mb-6">
+                            <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mr-6 flex-shrink-0 group-hover:scale-110 transition-transform">
+                                <i class="fas fa-graduation-cap text-white text-2xl"></i>
+                            </div>
+                            <div>
+                                <div class="flex items-center gap-2 mb-2">
+                                    <h4 class="text-xl font-bold text-gray-900">Manoi – Educational Platform</h4>
+                                    <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">Live</span>
+                                </div>
+                                <p class="text-gray-600 text-sm mb-2">Full Stack Project</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 mb-4">
+                            Full-stack learning platform featuring JWT-based authentication and role-based access control, course progress tracking, and user dashboards for structured learning management. Built with React and Tailwind CSS, deployed on Netlify.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs">React</span>
+                            <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-xs">Tailwind CSS</span>
+                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-xs">JWT Auth</span>
+                            <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-xs">RBAC</span>
+                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs">Netlify</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="https://manoi.netlify.app" target="_blank" class="text-primary hover:text-secondary font-medium text-sm transition-all hover:scale-105">
+                                <i class="fas fa-external-link-alt mr-1"></i>Live Demo
+                            </a>
+                            <a href="https://github.com/anjulchauhan24" target="_blank" class="text-gray-600 hover:text-gray-800 font-medium text-sm transition-all hover:scale-105">
+                                <i class="fab fa-github mr-1"></i>GitHub
+                            </a>
+                        </div>
+                    </div>
 
-                <!-- Stacked card deck -->
-                <div class="project-stack" id="projectStack">
-                    <!-- Cards injected by JS -->
-                </div>
-
-                <!-- Navigation -->
-                <div class="flex justify-center items-center gap-5 mt-8">
-                    <button id="projPrev"
-                            class="w-10 h-10 rounded-full border-2 border-gray-200 text-gray-500 hover:border-primary hover:text-primary transition-all duration-300 hover:scale-110 flex items-center justify-center">
-                        <i class="fas fa-chevron-left text-sm"></i>
-                    </button>
-                    <div class="flex gap-2 items-center" id="projectDots"></div>
-                    <button id="projNext"
-                            class="w-10 h-10 rounded-full border-2 border-gray-200 text-gray-500 hover:border-primary hover:text-primary transition-all duration-300 hover:scale-110 flex items-center justify-center">
-                        <i class="fas fa-chevron-right text-sm"></i>
-                    </button>
+                    <div class="bg-white p-8 rounded-2xl shadow-lg hover-lift group tilt-card">
+                        <div class="flex items-start mb-6">
+                            <div class="w-16 h-16 bg-gradient-to-br from-red-500 to-pink-600 rounded-2xl flex items-center justify-center mr-6 flex-shrink-0 group-hover:scale-110 transition-transform">
+                                <i class="fas fa-video text-white text-2xl"></i>
+                            </div>
+                            <div>
+                                <div class="flex items-center gap-2 mb-2">
+                                    <h4 class="text-xl font-bold text-gray-900">Real-Time Livestream Platform</h4>
+                                    <span class="bg-red-100 text-red-800 px-2 py-1 rounded-full text-xs">Full Stack</span>
+                                    <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">Live</span>
+                                </div>
+                                <p class="text-gray-600 text-sm mb-2">2024</p>
+                            </div>
+                        </div>
+                        <p class="text-gray-700 mb-4">
+                            Full-stack livestream platform supporting RTSP, HLS, HTTP, and YouTube streams with real-time playback controls. Drag-and-drop overlay engine for dynamic text/image positioning stored in MongoDB, Flask REST APIs, and structured error handling.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-xs">Python Flask</span>
+                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-xs">React</span>
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-xs">MongoDB</span>
+                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs">RTSP / HLS</span>
+                            <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-xs">Drag &amp; Drop</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="https://livestream-drbboui78-anjulchauhan24s-projects.vercel.app/" target="_blank" class="text-primary hover:text-secondary font-medium text-sm transition-all hover:scale-105">
+                                <i class="fas fa-external-link-alt mr-1"></i>Live Demo
+                            </a>
+                            <a href="https://github.com/anjulchauhan24" target="_blank" class="text-gray-600 hover:text-gray-800 font-medium text-sm transition-all hover:scale-105">
+                                <i class="fab fa-github mr-1"></i>GitHub
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -2006,160 +1878,9 @@
         const contactForm = document.getElementById('contactForm');
         if (contactForm) {
             contactForm.addEventListener('submit', (e) => {
-
+                
             });
         }
-
-        // ── Stacked Project Cards ──────────────────────────────────────────
-        (function () {
-            const PROJECTS = [
-                {
-                    bg: '#EEF2FF',
-                    category: 'Full Stack · React · Netlify',
-                    titleItalic: 'Manoi –',
-                    titleBold: 'Educational Platform',
-                    desc: 'Full-stack learning platform featuring JWT-based authentication and role-based access control, course progress tracking, and user dashboards for structured learning management. Built with React and Tailwind CSS, deployed live on Netlify.',
-                    tags: [
-                        { l: 'React',        c: 'bg-blue-100 text-blue-800' },
-                        { l: 'JWT Auth',     c: 'bg-yellow-100 text-yellow-800' },
-                        { l: 'RBAC',         c: 'bg-red-100 text-red-800' },
-                        { l: 'Tailwind CSS', c: 'bg-orange-100 text-orange-800' },
-                        { l: 'Netlify',      c: 'bg-purple-100 text-purple-800' }
-                    ],
-                    liveUrl:   'https://manoi.netlify.app',
-                    githubUrl: 'https://github.com/anjulchauhan24',
-                    icon: 'fas fa-graduation-cap',
-                    grad: 'linear-gradient(135deg, #818cf8, #7c3aed)',
-                    ring: '#a5b4fc'
-                },
-                {
-                    bg: '#FFF7ED',
-                    category: 'Full Stack · Real-Time · Flask',
-                    titleItalic: 'Real-Time',
-                    titleBold: 'Livestream Platform',
-                    desc: 'Full-stack livestream platform supporting RTSP, HLS, HTTP, and YouTube streams with real-time playback controls. Drag-and-drop overlay engine for dynamic text/image positioning stored in MongoDB, with Flask REST APIs.',
-                    tags: [
-                        { l: 'Python Flask', c: 'bg-blue-100 text-blue-800' },
-                        { l: 'React',        c: 'bg-yellow-100 text-yellow-800' },
-                        { l: 'MongoDB',      c: 'bg-green-100 text-green-800' },
-                        { l: 'RTSP / HLS',   c: 'bg-purple-100 text-purple-800' },
-                        { l: 'Drag & Drop',  c: 'bg-pink-100 text-pink-800' }
-                    ],
-                    liveUrl:   'https://livestream-drbboui78-anjulchauhan24s-projects.vercel.app/',
-                    githubUrl: 'https://github.com/anjulchauhan24',
-                    icon: 'fas fa-video',
-                    grad: 'linear-gradient(135deg, #f87171, #db2777)',
-                    ring: '#fca5a5'
-                },
-                {
-                    bg: '#F0FDF4',
-                    category: 'GenAI · FastAPI · Backend',
-                    titleItalic: 'AI-Powered',
-                    titleBold: 'Education API',
-                    desc: 'Backend modules for an AI-powered education platform built at CybHop Tech LLP. Integrates Google Gemini API for personalized learning profiles, JWT authentication, role-based access control, and Pydantic validation.',
-                    tags: [
-                        { l: 'FastAPI',           c: 'bg-green-100 text-green-800' },
-                        { l: 'MongoDB',           c: 'bg-blue-100 text-blue-800' },
-                        { l: 'Google Gemini API', c: 'bg-purple-100 text-purple-800' },
-                        { l: 'JWT Auth',          c: 'bg-yellow-100 text-yellow-800' },
-                        { l: 'Pydantic',          c: 'bg-indigo-100 text-indigo-800' }
-                    ],
-                    liveUrl:   null,
-                    githubUrl: 'https://github.com/anjulchauhan24',
-                    icon: 'fas fa-robot',
-                    grad: 'linear-gradient(135deg, #34d399, #059669)',
-                    ring: '#6ee7b7'
-                }
-            ];
-
-            let active = 0;
-            const N = PROJECTS.length;
-
-            function cardHTML(p) {
-                const tags = p.tags.map(t =>
-                    `<span class="proj-tag ${t.c}">${t.l}</span>`
-                ).join('');
-                const liveLink = p.liveUrl
-                    ? `<a href="${p.liveUrl}" target="_blank" rel="noopener" class="proj-link-main">Learn more <i class="fas fa-arrow-right" style="font-size:.65rem"></i></a>`
-                    : '';
-                const ghLink = `<a href="${p.githubUrl}" target="_blank" rel="noopener" class="proj-link-gh"><i class="fab fa-github"></i> GitHub</a>`;
-                return `
-                    <div class="proj-card-body">
-                        <div class="proj-card-text">
-                            <span class="proj-category">${p.category}</span>
-                            <h4 class="proj-title"><em>${p.titleItalic}</em> <strong>${p.titleBold}</strong></h4>
-                            <p class="proj-desc">${p.desc}</p>
-                            <div class="proj-tags">${tags}</div>
-                            <div class="proj-links">${liveLink}${ghLink}</div>
-                        </div>
-                        <div class="proj-visual">
-                            <div class="proj-orb">
-                                <div class="proj-orb-r1" style="border-color:${p.ring}"></div>
-                                <div class="proj-orb-r2" style="border-color:${p.ring}"></div>
-                                <div class="proj-orb-core" style="background:${p.grad}"><i class="${p.icon}"></i></div>
-                            </div>
-                        </div>
-                    </div>`;
-            }
-
-            function render() {
-                const stackEl = document.getElementById('projectStack');
-                const dotsEl  = document.getElementById('projectDots');
-                if (!stackEl || !dotsEl) return;
-
-                stackEl.innerHTML = '';
-                dotsEl.innerHTML  = '';
-
-                // Render back→front so front card is highest in stacking context
-                [2, 1, 0].forEach(offset => {
-                    const idx = (active + offset) % N;
-                    const p   = PROJECTS[idx];
-                    const el  = document.createElement('div');
-                    el.className = 'project-card-deck';
-                    el.setAttribute('data-pos', String(offset));
-                    el.style.background = p.bg;
-                    if (offset === 0) {
-                        el.innerHTML = cardHTML(p);
-                    } else {
-                        el.addEventListener('click', () => shift(offset));
-                    }
-                    stackEl.appendChild(el);
-                });
-
-                // Dots
-                for (let i = 0; i < N; i++) {
-                    const d = document.createElement('button');
-                    d.className = 'proj-dot' + (i === active ? ' active' : '');
-                    d.setAttribute('aria-label', 'Project ' + (i + 1));
-                    d.addEventListener('click', () => { active = i; render(); });
-                    dotsEl.appendChild(d);
-                }
-            }
-
-            function shift(by) {
-                active = (active + by + N) % N;
-                render();
-            }
-
-            // Navigation buttons
-            const prevBtn = document.getElementById('projPrev');
-            const nextBtn = document.getElementById('projNext');
-            if (prevBtn) prevBtn.addEventListener('click', () => shift(-1));
-            if (nextBtn) nextBtn.addEventListener('click', () => shift(1));
-
-            // Auto-advance (pause on hover)
-            let autoTimer = setInterval(() => shift(1), 5500);
-            const stackEl = document.getElementById('projectStack');
-            if (stackEl) {
-                stackEl.addEventListener('mouseenter', () => clearInterval(autoTimer));
-                stackEl.addEventListener('mouseleave', () => {
-                    autoTimer = setInterval(() => shift(1), 5500);
-                });
-            }
-
-            render();
-        })();
-        // ──────────────────────────────────────────────────────────────────
     </script>
 </body>
 </html>
